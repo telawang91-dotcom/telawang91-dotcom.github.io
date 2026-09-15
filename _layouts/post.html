@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<div class="article-layout">
+  <article class="article" id="article">
+    <header class="article-header">
+      {% if page.series %}<p class="eyebrow">{{ page.series }}{% if page.series_index %} · {{ page.series_index }}{% endif %}</p>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}
+      <div class="article-meta">Posted by Wang Xinfeng · {{ page.date | date: "%Y-%m-%d" }}{% if page.updated %} · 更新于 {{ page.updated }}{% endif %} · <span id="reading-time">约 -- 分钟</span></div>
+    </header>
+
+    {% if page.series %}
+    <div class="series-note">
+      <strong>{{ page.series }}</strong>
+      <span>{{ page.series_note | default: "这组文章围绕 Agent 工程中的关键组件与工程取舍展开。" }}</span>
+    </div>
+    {% endif %}
+
+    <div class="article-body">{{ content }}</div>
+
+    {% if page.series %}
+    {% assign series_posts = site.posts | where: "series", page.series | reverse %}
+    <section class="series-directory">
+      <div class="series-directory-title">SERIES · {{ page.series }}</div>
+      {% for item in series_posts %}
+        <a href="{{ item.url | relative_url }}" {% if item.url == page.url %}class="current"{% endif %}><span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ item.title }}</a>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <div class="post-nav">
+      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><small>← PREVIOUS</small><strong>{{ page.previous.title }}</strong></a>{% endif %}
+      {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><small>NEXT →</small><strong>{{ page.next.title }}</strong></a>{% endif %}
+    </div>
+
+    <div class="article-end">
+      <p>如果这篇文章帮助你建立了更完整的 Agent 工程视角，可以继续查看 <a href="{{ '/learning-map/' | relative_url }}">AI Agent Learning Map</a>。</p>
+    </div>
+  </article>
+  <aside class="toc" id="toc">
+    <div class="toc-title">OUTLINE</div>
+    <input id="toc-filter" type="search" placeholder="Filter headings…" aria-label="Filter headings">
+    <nav id="toc-list"></nav>
+  </aside>
+</div>
