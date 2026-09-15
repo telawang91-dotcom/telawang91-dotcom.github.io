@@ -18,6 +18,15 @@
   </section>
 
   <section class="sidebar-block">
+    <div class="sidebar-title-row"><h2>SERIES</h2><a href="{{ '/tech/' | relative_url }}">ALL →</a></div>
+    <ol class="sidebar-series-list">
+      {% for s in site.data.series limit:6 %}
+      <li><a href="{{ '/series/' | append: s.id | append: '/' | relative_url }}"><span>{{ s.accent }}</span><strong>{{ s.short_title }}</strong></a></li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="sidebar-block">
     <h2>FOCUS</h2>
     <div class="tag-cloud compact">
       <a href="{{ '/tags/#Agent' | relative_url }}">Agent</a>
