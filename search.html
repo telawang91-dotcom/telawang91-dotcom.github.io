@@ -1,0 +1,17 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+<div class="narrow-page">
+  <p class="eyebrow">SEARCH</p>
+  <h1>全文搜索</h1>
+  <input class="big-search" id="site-search" type="search" placeholder="搜索 Agent、RAG、LangGraph…" autofocus>
+  <div id="search-results" class="search-results"></div>
+</div>
+<script>
+window.SEARCH_INDEX = [
+{% for post in site.posts %}{"title":{{ post.title | jsonify }},"url":{{ post.url | relative_url | jsonify }},"excerpt":{{ post.excerpt | strip_html | strip_newlines | jsonify }},"content":{{ post.content | strip_html | strip_newlines | jsonify }},"tags":{{ post.tags | join:' ' | jsonify }} }{% unless forloop.last %},{% endunless %}{% endfor %}
+];
+</script>
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
