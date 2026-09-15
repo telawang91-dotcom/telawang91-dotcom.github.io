@@ -62,7 +62,7 @@ sources = [motion_sensor, bed_sensor]
 
 ## 第五层：预测模型也要看数据量
 
-Smart Home 项目的公开实现里，预测模块会根据历史数据量选择不同方法：数据足够时用 Holt-Winters，数据较少时退化到 Holt，再少时使用 Newton Cooling 这类更简单的物理近似。这个设计的关键不是模型名字，而是**根据证据量选择复杂度**。 fileciteturn136file0L1-L2
+Smart Home 项目的公开实现里，预测模块会根据历史数据量选择不同方法：数据足够时用 Holt-Winters，数据较少时退化到 Holt，再少时使用 Newton Cooling 这类更简单的物理近似。这个设计的关键不是模型名字，而是**根据证据量选择复杂度**。
 
 ## 最终送入 Agent 的是什么
 
