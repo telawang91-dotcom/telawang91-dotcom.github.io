@@ -3,8 +3,10 @@ layout: post
 title: "Agent Planning 的 RAG，为什么和普通问答 RAG 不一样？"
 subtitle: "检索目标从“找到答案”变成“找到下一步怎么做”。"
 date: 2026-09-08 10:00:00 +0800
-series: "RAG Engineering"
-series_index: "03"
+series: "RAG 与 Context Engineering"
+series_key: rag-context
+series_index: "04"
+category: Tech
 tags: [RAG, Agent, Planning, Retrieval]
 ---
 
