@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="nav-shell">
+    <a class="brand" href="{{ '/' | relative_url }}">WX<span class="brand-dot">.</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      {% for item in site.nav %}
+      <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+      <a href="{{ site.profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a class="search-link" href="{{ '/search/' | relative_url }}" aria-label="Search">⌕</a>
+    </nav>
+  </div>
+</header>
