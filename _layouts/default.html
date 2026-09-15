@@ -4,11 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#fbfaf7">
+  <script>
+    (() => {
+      const saved = localStorage.getItem('theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = saved || preferred;
+    })();
+  </script>
   {% assign meta_title = page.title | default: site.title %}
   {% assign meta_description = page.description | default: site.description %}
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ meta_description | escape }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }} RSS" href="{{ '/feed.xml' | absolute_url }}">
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{{ meta_title | escape }}">
   <meta property="og:description" content="{{ meta_description | escape }}">
@@ -20,6 +28,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/v2.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/series.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/polish.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/features.css' | relative_url }}">
 </head>
 <body>
   {% include header.html %}
