@@ -1,16 +1,32 @@
 ---
 layout: default
 ---
+{% assign structured_series = nil %}
+{% if page.series_key %}
+  {% for s in site.data.series %}{% if s.id == page.series_key %}{% assign structured_series = s %}{% endif %}{% endfor %}
+{% endif %}
 <div class="article-layout">
   <article class="article" id="article">
     <header class="article-header">
-      {% if page.series %}<p class="eyebrow">{{ page.series }}{% if page.series_index %} · {{ page.series_index }}{% endif %}</p>{% endif %}
+      {% if structured_series %}
+        <p class="eyebrow"><a href="{{ '/series/' | append: structured_series.id | append: '/' | relative_url }}">{{ structured_series.short_title }}</a>{% if page.series_index %} · CHAPTER {{ page.series_index }}{% endif %}</p>
+      {% elsif page.series %}
+        <p class="eyebrow">{{ page.series }}{% if page.series_index %} · {{ page.series_index }}{% endif %}</p>
+      {% endif %}
       <h1>{{ page.title }}</h1>
       {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}
       <div class="article-meta">Posted by Wang Xinfeng · {{ page.date | date: "%Y-%m-%d" }}{% if page.updated %} · 更新于 {{ page.updated }}{% endif %} · <span id="reading-time">约 -- 分钟</span></div>
     </header>
 
-    {% if page.series %}
+    {% if structured_series %}
+    <div class="series-note structured">
+      <div>
+        <strong>{{ structured_series.title }}</strong>
+        <span>本文是该系列的第 {{ page.series_index }} 章。{{ structured_series.description }}</span>
+      </div>
+      <a href="{{ '/series/' | append: structured_series.id | append: '/' | relative_url }}">查看系列总纲 →</a>
+    </div>
+    {% elsif page.series %}
     <div class="series-note">
       <strong>{{ page.series }}</strong>
       <span>{{ page.series_note | default: "这组文章围绕 Agent 工程中的关键组件与工程取舍展开。" }}</span>
@@ -19,7 +35,18 @@ layout: default
 
     <div class="article-body">{{ content }}</div>
 
-    {% if page.series %}
+    {% if structured_series %}
+    <section class="series-directory">
+      <div class="series-directory-title">SERIES · {{ structured_series.title }}</div>
+      {% for ch in structured_series.chapters %}
+        {% if ch.status == 'published' and ch.url %}
+          <a href="{{ ch.url | relative_url }}" {% if ch.no == page.series_index %}class="current"{% endif %}><span>{{ ch.no }}</span>{{ ch.title }}</a>
+        {% else %}
+          <div class="series-directory-planned"><span>{{ ch.no }}</span><span>{{ ch.title }}</span><small>PLANNED</small></div>
+        {% endif %}
+      {% endfor %}
+    </section>
+    {% elsif page.series %}
     {% assign series_posts = site.posts | where: "series", page.series | reverse %}
     <section class="series-directory">
       <div class="series-directory-title">SERIES · {{ page.series }}</div>
@@ -35,7 +62,7 @@ layout: default
     </div>
 
     <div class="article-end">
-      <p>如果这篇文章帮助你建立了更完整的 Agent 工程视角，可以继续查看 <a href="{{ '/learning-map/' | relative_url }}">AI Agent Learning Map</a>。</p>
+      <p>如果这篇文章帮助你建立了更完整的 Agent 工程视角，可以继续查看 <a href="{{ '/tech/' | relative_url }}">Tech Series</a> 或 <a href="{{ '/learning-map/' | relative_url }}">AI Agent Learning Map</a>。</p>
     </div>
   </article>
   <aside class="toc" id="toc">
