@@ -1,0 +1,13 @@
+<article class="post-card">
+  <div class="post-meta-row">
+    {% if include.pinned %}<span class="pin">置顶</span>{% endif %}
+    {% if include.post.series %}<span class="series">{{ include.post.series }}</span>{% endif %}
+    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y-%m-%d" }}</time>
+  </div>
+  <h2><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h2>
+  {% if include.post.subtitle %}<p class="post-subtitle">{{ include.post.subtitle }}</p>{% endif %}
+  <p>{{ include.post.excerpt | strip_html | truncate: 210 }}</p>
+  <div class="post-tags">
+    {% for tag in include.post.tags %}<span>#{{ tag }}</span>{% endfor %}
+  </div>
+</article>
