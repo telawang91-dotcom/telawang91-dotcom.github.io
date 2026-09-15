@@ -19,6 +19,8 @@ profile:
 nav:
   - title: Blog
     url: /
+  - title: Tech
+    url: /tech/
   - title: Learning Map
     url: /learning-map/
   - title: Projects
