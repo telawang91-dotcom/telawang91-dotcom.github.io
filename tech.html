@@ -1,0 +1,35 @@
+---
+layout: default
+title: Tech
+permalink: /tech/
+---
+<div class="wide-page tech-index">
+  <p class="eyebrow">TECH · SERIES</p>
+  <h1>AI Agent Engineering</h1>
+  <p class="lead">不是按时间堆文章，而是按能力层次组织知识：从 Agent 基础、检索与上下文，到 Runtime、可靠性、Coding Agent 与完整项目案例。</p>
+
+  <div class="tech-map-strip">
+    <span>Foundation</span><b>→</b><span>Context</span><b>→</b><span>Runtime</span><b>→</b><span>Reliability</span><b>→</b><span>AI Coding</span><b>→</b><span>Case Study</span>
+  </div>
+
+  <section class="series-grid">
+    {% for s in site.data.series %}
+      {% assign published_count = 0 %}
+      {% for ch in s.chapters %}{% if ch.status == 'published' %}{% assign published_count = published_count | plus: 1 %}{% endif %}{% endfor %}
+      <a class="series-card" href="{{ '/series/' | append: s.id | append: '/' | relative_url }}">
+        <div class="series-card-top"><span>{{ s.accent }}</span><span>{{ s.category }}</span></div>
+        <h2>{{ s.short_title }}</h2>
+        <p>{{ s.description }}</p>
+        <div class="series-card-bottom"><span>{{ s.chapters.size }} chapters</span><span>{{ published_count }} published →</span></div>
+      </a>
+    {% endfor %}
+  </section>
+
+  <section class="tech-principle">
+    <div>
+      <strong>阅读方式</strong>
+      <p>第一次来可以从 Learning Map 开始；想系统学一个方向，就进入对应 Series 从总纲往下读；只想查一个问题，直接用 Search / Tags。</p>
+    </div>
+    <a class="button primary" href="{{ '/learning-map/' | relative_url }}">Open Learning Map</a>
+  </section>
+</div>
