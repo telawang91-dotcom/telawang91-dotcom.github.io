@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://telawang91-dotcom.github.io/sitemap.xml
