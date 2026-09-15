@@ -13,17 +13,20 @@
       status: planned
     - no: "02"
       title: "Function Calling：模型如何学会调用工具"
-      status: planned
+      status: published
+      url: "/2026/09/15/function-calling/"
     - no: "03"
       title: "MCP：为什么有 Function Calling 还需要协议层"
       status: published
       url: "/2026/09/14/mcp-and-function-calling/"
     - no: "04"
       title: "Tool Schema 与 Tool Router：工具多了以后怎么办"
-      status: planned
+      status: published
+      url: "/2026/09/15/tool-schema-router/"
     - no: "05"
       title: "Memory：短期记忆、长期记忆与可控召回"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-memory/"
     - no: "06"
       title: "Planning：ReAct、Plan-and-Execute 与结构化计划"
       status: planned
@@ -43,13 +46,16 @@
       status: planned
     - no: "01"
       title: "RAG 基础：Chunk、Embedding、Vector Search"
-      status: planned
+      status: published
+      url: "/2026/09/15/rag-basics/"
     - no: "02"
       title: "Hybrid Search：关键词、向量与 RRF 融合"
-      status: planned
+      status: published
+      url: "/2026/09/15/hybrid-search/"
     - no: "03"
       title: "RAG Badcase：知识库有答案却检索不到怎么排查"
-      status: planned
+      status: published
+      url: "/2026/09/15/rag-badcase-debugging/"
     - no: "04"
       title: "Agent Planning 的 RAG，为什么和问答 RAG 不一样"
       status: published
@@ -63,7 +69,8 @@
       status: planned
     - no: "07"
       title: "权限 RAG：最小权限、元数据过滤与越权防护"
-      status: planned
+      status: published
+      url: "/2026/09/15/permission-aware-rag/"
 
 - id: workflow-multi-agent
   title: "Workflow 与 Multi-Agent：从自由流转到可控编排"
@@ -85,16 +92,19 @@
       url: "/2026/09/03/langgraph-for-multi-agent/"
     - no: "03"
       title: "Supervisor 与 Manager Agent：任务怎么分发"
-      status: planned
+      status: published
+      url: "/2026/09/15/supervisor-manager-agent/"
     - no: "04"
       title: "产物驱动 Workflow：为什么用 Artifact 推动状态流转"
       status: planned
     - no: "05"
       title: "Retry、Rollback 与 Replan：失败以后怎么继续"
-      status: planned
+      status: published
+      url: "/2026/09/15/retry-rollback-replan/"
     - no: "06"
       title: "多 Agent 共享上下文：共享什么，不共享什么"
-      status: planned
+      status: published
+      url: "/2026/09/15/multi-agent-shared-context/"
     - no: "07"
       title: "多 Agent 系统最常见的五类流转 Badcase"
       status: planned
@@ -115,13 +125,16 @@
       url: "/2026/09/11/agent-tracing/"
     - no: "02"
       title: "Benchmark：如何设计真正能回归的 Agent 任务集"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-benchmark/"
     - no: "03"
       title: "LLM-as-Judge 为什么不稳定，以及什么时候还能用"
-      status: planned
+      status: published
+      url: "/2026/09/15/llm-as-judge/"
     - no: "04"
       title: "AST / Assertion：如何做确定性执行结果比对"
-      status: planned
+      status: published
+      url: "/2026/09/15/deterministic-agent-evaluation/"
     - no: "05"
       title: "七维评测：从完成率到工程质量"
       status: planned
@@ -145,19 +158,22 @@
       url: "/2026/09/10/coding-agent-harness/"
     - no: "01"
       title: "Codebase Context：大仓库如何被 Agent 理解"
-      status: planned
+      status: published
+      url: "/2026/09/15/codebase-context/"
     - no: "02"
       title: "Workspace Context：任务产物如何跨 Agent 传递"
       status: planned
     - no: "03"
       title: "Coding Workflow：Spec → Design → Tasks → Code"
-      status: planned
+      status: published
+      url: "/2026/09/15/coding-workflow/"
     - no: "04"
       title: "Script Validation：JSON、Workflow 与 Bash 校验"
       status: planned
     - no: "05"
       title: "无交互评测与真实交互 Harness 有什么差异"
-      status: planned
+      status: published
+      url: "/2026/09/15/offline-eval-vs-interactive-harness/"
     - no: "06"
       title: "Coding Agent 的工具权限与最小权限原则"
       status: planned
