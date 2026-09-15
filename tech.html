@@ -12,6 +12,31 @@ permalink: /tech/
     <span>Foundation</span><b>→</b><span>Context</span><b>→</b><span>Runtime</span><b>→</b><span>Reliability</span><b>→</b><span>AI Coding</span><b>→</b><span>Case Study</span>
   </div>
 
+  <section class="reading-routes">
+    <div class="section-heading"><span>READING ROUTES</span><span class="rule"></span></div>
+    <div class="reading-route-grid">
+      <article>
+        <span class="route-label">START FROM ZERO</span>
+        <h2>从“会用 LLM”到理解 Agent</h2>
+        <p>适合第一次系统学习 Agent。先建立 Tool Use、Memory、Planning，再进入 RAG 与 Runtime。</p>
+        <div class="route-steps"><a href="{{ '/series/agent-foundations/' | relative_url }}">Agent Foundations</a><b>→</b><a href="{{ '/series/rag-context/' | relative_url }}">RAG & Context</a><b>→</b><a href="{{ '/series/workflow-multi-agent/' | relative_url }}">Workflow</a></div>
+      </article>
+      <article>
+        <span class="route-label">PRODUCTION AGENT</span>
+        <h2>从 Demo 到可靠工程系统</h2>
+        <p>适合已经会基础 Agent，希望理解状态、失败恢复、Tracing、Guardrail 与 Benchmark 的读者。</p>
+        <div class="route-steps"><a href="{{ '/series/workflow-multi-agent/' | relative_url }}">Runtime</a><b>→</b><a href="{{ '/series/evaluation-reliability/' | relative_url }}">Evaluation</a><b>→</b><a href="{{ '/series/ai-coding-harness/' | relative_url }}">Harness</a></div>
+      </article>
+      <article>
+        <span class="route-label">INTERVIEW / PROJECT</span>
+        <h2>从工程案例反推方法论</h2>
+        <p>适合准备 Agent 开发面试或做个人项目。先看完整案例，再回到对应知识章节补原理。</p>
+        <div class="route-steps"><a href="{{ '/series/project-cases/' | relative_url }}">Case Studies</a><b>→</b><a href="{{ '/projects/' | relative_url }}">Projects</a><b>→</b><a href="{{ '/series/evaluation-reliability/' | relative_url }}">Evaluation</a></div>
+      </article>
+    </div>
+  </section>
+
+  <div class="section-heading series-heading"><span>ALL SERIES</span><span class="rule"></span></div>
   <section class="series-grid">
     {% for s in site.data.series %}
       {% assign published_count = 0 %}
@@ -28,7 +53,7 @@ permalink: /tech/
   <section class="tech-principle">
     <div>
       <strong>阅读方式</strong>
-      <p>第一次来可以从 Learning Map 开始；想系统学一个方向，就进入对应 Series 从总纲往下读；只想查一个问题，直接用 Search / Tags。</p>
+      <p>第一次来可以按 Reading Routes 选路线；想系统学一个方向，就进入对应 Series 从总纲往下读；只想查一个问题，直接用 Search / Tags。</p>
     </div>
     <a class="button primary" href="{{ '/learning-map/' | relative_url }}">Open Learning Map</a>
   </section>
