@@ -3,8 +3,10 @@ layout: post
 title: "LangGraph 为什么更适合 Multi-Agent？"
 subtitle: "真正需要的不是更多 Agent，而是可控的状态、路由和恢复。"
 date: 2026-09-03 10:00:00 +0800
-series: "Multi-Agent"
+series: "Workflow 与 Multi-Agent"
+series_key: workflow-multi-agent
 series_index: "02"
+category: Tech
 tags: [LangGraph, Multi-Agent, Agent, Workflow]
 ---
 
