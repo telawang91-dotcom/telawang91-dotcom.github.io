@@ -7,10 +7,12 @@
   chapters:
     - no: "00"
       title: "总纲：AI Agent 到底在解决什么问题？"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-foundations-overview/"
     - no: "01"
       title: "从 LLM 到 Agent：模型、状态、工具与环境"
-      status: planned
+      status: published
+      url: "/2026/09/15/from-llm-to-agent/"
     - no: "02"
       title: "Function Calling：模型如何学会调用工具"
       status: published
@@ -45,7 +47,8 @@
   chapters:
     - no: "00"
       title: "总纲：Agent 的上下文为什么比 Prompt 更重要"
-      status: planned
+      status: published
+      url: "/2026/09/15/rag-context-overview/"
     - no: "01"
       title: "RAG 基础：Chunk、Embedding、Vector Search"
       status: published
@@ -84,7 +87,8 @@
   chapters:
     - no: "00"
       title: "总纲：为什么 Agent 需要 Runtime"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-runtime-overview/"
     - no: "01"
       title: "为什么 Agent Workflow 需要状态机"
       status: published
@@ -123,7 +127,8 @@
   chapters:
     - no: "00"
       title: "总纲：为什么 Agent 的评测比聊天机器人难"
-      status: planned
+      status: published
+      url: "/2026/09/15/evaluation-overview/"
     - no: "01"
       title: "Tracing：一次 Agent 失败到底错在哪一层"
       status: published
