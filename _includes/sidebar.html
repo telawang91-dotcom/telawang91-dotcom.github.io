@@ -18,24 +18,30 @@
   </section>
 
   <section class="sidebar-block">
-    <div class="sidebar-title-row"><h2>SERIES</h2><a href="{{ '/tech/' | relative_url }}">ALL →</a></div>
-    <ol class="sidebar-series-list">
-      {% for s in site.data.series limit:6 %}
-      <li><a href="{{ '/series/' | append: s.id | append: '/' | relative_url }}"><span>{{ s.accent }}</span><strong>{{ s.short_title }}</strong></a></li>
+    <div class="sidebar-title-row"><h2>SERIES PROGRESS</h2><a href="{{ '/tech/' | relative_url }}">ALL →</a></div>
+    <div class="series-progress-list">
+      {% for s in site.data.series %}
+        {% assign published_count = 0 %}
+        {% for ch in s.chapters %}{% if ch.status == 'published' %}{% assign published_count = published_count | plus: 1 %}{% endif %}{% endfor %}
+        {% assign pct = published_count | times: 100 | divided_by: s.chapters.size %}
+        <a class="series-progress-item" href="{{ '/series/' | append: s.id | append: '/' | relative_url }}">
+          <div><span>{{ s.accent }}</span><strong>{{ s.short_title }}</strong><small>{{ published_count }}/{{ s.chapters.size }}</small></div>
+          <div class="series-progress-track"><i style="width:{{ pct }}%"></i></div>
+        </a>
       {% endfor %}
-    </ol>
+    </div>
   </section>
 
   <section class="sidebar-block">
-    <h2>FOCUS</h2>
-    <div class="tag-cloud compact">
-      <a href="{{ '/tags/#Agent' | relative_url }}">Agent</a>
-      <a href="{{ '/tags/#RAG' | relative_url }}">RAG</a>
-      <a href="{{ '/tags/#LangGraph' | relative_url }}">LangGraph</a>
-      <a href="{{ '/tags/#Evaluation' | relative_url }}">Evaluation</a>
-      <a href="{{ '/tags/#AI-Coding' | relative_url }}">AI Coding</a>
-      <a href="{{ '/tags/#Context-Engineering' | relative_url }}">Context</a>
-    </div>
+    <h2>RECOMMENDED</h2>
+    <p class="sidebar-note">Curated core reads — not traffic ranking.</p>
+    <ol class="recommended-list">
+      <li><a href="{{ '/2026/09/15/agent-foundations-overview/' | relative_url }}"><span>01</span><strong>AI Agent 到底在解决什么问题？</strong></a></li>
+      <li><a href="{{ '/2026/09/15/rag-badcase-debugging/' | relative_url }}"><span>02</span><strong>RAG Badcase 怎么分层排查</strong></a></li>
+      <li><a href="{{ '/2026/09/12/why-agent-workflow-needs-state-machine/' | relative_url }}"><span>03</span><strong>为什么 Workflow 需要状态机</strong></a></li>
+      <li><a href="{{ '/2026/09/11/agent-tracing/' | relative_url }}"><span>04</span><strong>Agent Tracing：失败错在哪一层</strong></a></li>
+      <li><a href="{{ '/2026/09/10/coding-agent-harness/' | relative_url }}"><span>05</span><strong>Coding Agent 与 Agent Harness</strong></a></li>
+    </ol>
   </section>
 
   <section class="sidebar-block">
