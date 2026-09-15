@@ -197,28 +197,46 @@
   title: "Agent Project Case Studies：从原型到可运行系统"
   short_title: "Project Case Studies"
   category: "Case Studies"
-  description: "用公开项目复盘 Agent 系统的完整设计，包括 ReproLab、Smart Home Multi-Agent 与 GUI Agent 方法论。"
+  description: "用公开项目与脱敏工程实践复盘 Agent 系统的完整设计，包括 Smart Home、ReproLab、GUI Agent、结构化 Planning 与 Harness。"
   accent: "06"
   chapters:
     - no: "00"
-      title: "总纲：怎么把一个 Agent Demo 做成可展示项目"
-      status: planned
+      title: "总纲：怎么把一个 Agent Demo 做成可展示、可运行的系统"
+      status: published
+      url: "/2026/09/15/agent-demo-to-system/"
     - no: "01"
       title: "Smart Home：感知—预测—决策—验证—执行闭环"
       status: published
       url: "/2026/09/09/smart-home-agent-loop/"
     - no: "02"
       title: "Smart Home：传感器抖动、异常值与数据筛选"
-      status: planned
+      status: published
+      url: "/2026/09/15/smart-home-sensor-data/"
     - no: "03"
       title: "ReproLab：可信科研 Agent 的数据血缘设计"
-      status: planned
+      status: published
+      url: "/2026/09/15/reprolab-provenance/"
     - no: "04"
       title: "ReproLab：Planner / Executor / Critic 的工程边界"
-      status: planned
+      status: published
+      url: "/2026/09/15/reprolab-agent-boundaries/"
     - no: "05"
       title: "GUI Agent：功能树、路径检索与 Tool Execution"
-      status: planned
+      status: published
+      url: "/2026/09/15/gui-agent-function-tree/"
     - no: "06"
       title: "从项目 README 到技术博客：如何公开表达工程深度"
-      status: planned
+      status: published
+      url: "/2026/09/15/public-engineering-writing/"
+    - no: "07"
+      title: "GUI Agent：Badcase 怎么从一次失败变成回归资产"
+      status: published
+      url: "/2026/09/15/gui-agent-badcase-loop/"
+    - no: "08"
+      title: "工程实践：为什么结构化 Plan + Executor 更适合可评测 Agent"
+      status: published
+      url: "/2026/09/15/structured-plan-executor/"
+    - no: "09"
+      title: "工程实践：Agent Harness 如何把 Workflow、Context 和 Evaluation 串成闭环"
+      status: published
+      url: "/2026/09/15/agent-harness-closed-loop/"
