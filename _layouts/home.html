@@ -6,9 +6,16 @@ layout: default
   <h1>{{ site.profile.name }}</h1>
   <p class="hero-role">{{ site.profile.role }}</p>
   <p class="hero-copy">我关注的不只是让 LLM “能回答”，而是把 Agent 做成可编排、可验证、可观测、能持续迭代的工程系统。</p>
+  <p class="hero-meta">深圳大学 · Workflow / RAG / Context Engineering / Multi-Agent / Evaluation / AI Coding</p>
   <div class="hero-actions">
     <a class="button primary" href="{{ '/learning-map/' | relative_url }}">AI Agent 学习地图</a>
     <a class="button" href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a class="button" href="{{ site.profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </div>
+  <div class="focus-strip" aria-label="Current focus">
+    <div><span>01</span><strong>Agent Runtime</strong><small>Workflow · State Machine · Harness</small></div>
+    <div><span>02</span><strong>Context & Retrieval</strong><small>RAG · Memory · Codebase Context</small></div>
+    <div><span>03</span><strong>Reliability</strong><small>Tracing · Evaluation · Guardrails</small></div>
   </div>
 </section>
 
