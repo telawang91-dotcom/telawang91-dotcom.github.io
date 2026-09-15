@@ -1,0 +1,15 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+<div class="narrow-page">
+  <p class="eyebrow">ARCHIVE</p>
+  <h1>All Posts</h1>
+  <p class="lead">按时间回看学习与工程实践。</p>
+  <div class="archive-list">
+    {% for post in site.posts %}
+      <div class="archive-row"><time>{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% if post.series %}<span>{{ post.series }}</span>{% endif %}</div>
+    {% endfor %}
+  </div>
+</div>
