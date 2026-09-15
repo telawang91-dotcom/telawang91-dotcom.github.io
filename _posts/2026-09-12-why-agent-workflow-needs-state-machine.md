@@ -4,8 +4,10 @@ title: "为什么 Agent Workflow 需要状态机，而不是让 LLM 自由流转
 subtitle: "当任务进入真实工程环境，流程控制必须从 Prompt 中拿出来。"
 date: 2026-09-12 10:00:00 +0800
 pinned: true
-series: "AI Agent Engineering"
-series_index: "04"
+series: "Workflow 与 Multi-Agent"
+series_key: workflow-multi-agent
+series_index: "01"
+category: Tech
 tags: [Agent, Workflow, LangGraph, Multi-Agent, Evaluation]
 ---
 
