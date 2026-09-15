@@ -1,0 +1,48 @@
+---
+layout: default
+---
+{% assign s = nil %}
+{% for item in site.data.series %}{% if item.id == page.series_key %}{% assign s = item %}{% endif %}{% endfor %}
+<div class="series-page wide-page">
+  <a class="series-back" href="{{ '/tech/' | relative_url }}">← Tech / Series</a>
+  <header class="series-hero">
+    <div class="series-number">{{ s.accent }}</div>
+    <div>
+      <p class="eyebrow">{{ s.category }} · SERIES OVERVIEW</p>
+      <h1>{{ s.title }}</h1>
+      <p class="lead">{{ s.description }}</p>
+    </div>
+  </header>
+
+  <div class="series-progress">
+    {% assign published_count = 0 %}
+    {% for ch in s.chapters %}{% if ch.status == 'published' %}{% assign published_count = published_count | plus: 1 %}{% endif %}{% endfor %}
+    <span><strong>{{ published_count }}</strong> / {{ s.chapters.size }} published</span>
+    <span>{{ s.short_title }}</span>
+  </div>
+
+  <section class="series-overview-copy">
+    {{ content }}
+  </section>
+
+  <section class="chapter-list">
+    <div class="section-heading"><span>CHAPTERS</span><span class="rule"></span></div>
+    {% for ch in s.chapters %}
+      {% if ch.status == 'published' and ch.url %}
+        <a class="chapter-row published" href="{{ ch.url | relative_url }}">
+          <span class="chapter-no">{{ ch.no }}</span>
+          <span class="chapter-title">{{ ch.title }}</span>
+          <span class="chapter-status">READ →</span>
+        </a>
+      {% else %}
+        <div class="chapter-row planned">
+          <span class="chapter-no">{{ ch.no }}</span>
+          <span class="chapter-title">{{ ch.title }}</span>
+          <span class="chapter-status">PLANNED</span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  <div class="series-footer-note">这套系列会持续更新。已发布章节可以直接阅读，PLANNED 表示已进入写作路线图。</div>
+</div>
