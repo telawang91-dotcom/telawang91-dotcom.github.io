@@ -1,11 +1,20 @@
 <aside class="sidebar">
   <section class="sidebar-block profile-block">
-    <div class="avatar-mark">WX</div>
+    <img class="avatar-photo" src="https://avatars.githubusercontent.com/u/246070491?v=4" alt="Wang Xinfeng GitHub avatar" loading="lazy">
     <h2>ABOUT ME</h2>
     <p class="profile-name">{{ site.profile.name }}</p>
     <p>{{ site.profile.role }}. Focus on workflow orchestration, context engineering, RAG, multi-agent systems and evaluation.</p>
     <p class="muted">{{ site.profile.school }}</p>
-    <p><a href="{{ '/about/' | relative_url }}">More about me →</a></p>
+    <p class="sidebar-links"><a href="{{ '/about/' | relative_url }}">About →</a><a href="{{ site.profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a></p>
+  </section>
+
+  <section class="sidebar-block now-block">
+    <h2>NOW</h2>
+    <dl class="now-list">
+      <div><dt>Building</dt><dd>Reliable Agent systems</dd></div>
+      <div><dt>Writing</dt><dd>AI Agent Engineering</dd></div>
+      <div><dt>Exploring</dt><dd>AI Coding & Agent Harness</dd></div>
+    </dl>
   </section>
 
   <section class="sidebar-block">
@@ -22,9 +31,10 @@
 
   <section class="sidebar-block">
     <h2>FEATURED PROJECTS</h2>
-    <ul class="link-list">
-      <li><a href="https://github.com/telawang91-dotcom/reprolab" target="_blank" rel="noreferrer">ReproLab ↗</a><span>可复现科研 Agent 工作台</span></li>
-      <li><a href="https://github.com/telawang91-dotcom/smart-home-multi-agent" target="_blank" rel="noreferrer">Smart Home Multi-Agent ↗</a><span>LangGraph 老年照护智能家居</span></li>
+    <ul class="link-list project-link-list">
+      <li><a href="https://github.com/telawang91-dotcom/reprolab" target="_blank" rel="noreferrer">ReproLab ↗</a><span>可信科研 Agent 工作台 · Provenance / Reproduction</span></li>
+      <li><a href="https://github.com/telawang91-dotcom/smart-home-multi-agent" target="_blank" rel="noreferrer">Smart Home Multi-Agent ↗</a><span>LangGraph · Supervisor · Home Assistant</span></li>
     </ul>
+    <p><a class="text-link" href="{{ '/projects/' | relative_url }}">All projects →</a></p>
   </section>
 </aside>
