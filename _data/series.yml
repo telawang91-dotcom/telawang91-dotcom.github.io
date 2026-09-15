@@ -16,7 +16,8 @@
       status: planned
     - no: "03"
       title: "MCP：为什么有 Function Calling 还需要协议层"
-      status: planned
+      status: published
+      url: "/2026/09/14/mcp-and-function-calling/"
     - no: "04"
       title: "Tool Schema 与 Tool Router：工具多了以后怎么办"
       status: planned
@@ -55,7 +56,8 @@
       url: "/2026/09/08/rag-for-agent-planning/"
     - no: "05"
       title: "Context Engineering：Workspace 与 Codebase"
-      status: planned
+      status: published
+      url: "/2026/09/13/context-engineering-workspace-codebase/"
     - no: "06"
       title: "Few-shot Retrieval：让历史轨迹成为规划知识"
       status: planned
@@ -109,7 +111,8 @@
       status: planned
     - no: "01"
       title: "Tracing：一次 Agent 失败到底错在哪一层"
-      status: planned
+      status: published
+      url: "/2026/09/11/agent-tracing/"
     - no: "02"
       title: "Benchmark：如何设计真正能回归的 Agent 任务集"
       status: planned
@@ -138,7 +141,8 @@
   chapters:
     - no: "00"
       title: "总纲：Coding Agent 到底比普通 Agent 多了什么"
-      status: planned
+      status: published
+      url: "/2026/09/10/coding-agent-harness/"
     - no: "01"
       title: "Codebase Context：大仓库如何被 Agent 理解"
       status: planned
@@ -173,7 +177,8 @@
       status: planned
     - no: "01"
       title: "Smart Home：感知—预测—决策—验证—执行闭环"
-      status: planned
+      status: published
+      url: "/2026/09/09/smart-home-agent-loop/"
     - no: "02"
       title: "Smart Home：传感器抖动、异常值与数据筛选"
       status: planned
