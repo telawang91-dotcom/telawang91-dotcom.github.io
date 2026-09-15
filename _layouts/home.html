@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<section class="hero">
+  <p class="eyebrow">AI AGENT ENGINEERING · LEARNING IN PUBLIC</p>
+  <h1>{{ site.profile.name }}</h1>
+  <p class="hero-role">{{ site.profile.role }}</p>
+  <p class="hero-copy">我关注的不只是让 LLM “能回答”，而是把 Agent 做成可编排、可验证、可观测、能持续迭代的工程系统。</p>
+  <div class="hero-actions">
+    <a class="button primary" href="{{ '/learning-map/' | relative_url }}">AI Agent 学习地图</a>
+    <a class="button" href="{{ '/projects/' | relative_url }}">Projects</a>
+  </div>
+</section>
+
+<div class="content-grid">
+  <section class="post-column">
+    <div class="section-heading"><span>PINNED</span><span class="rule"></span></div>
+    {% assign pinned = site.posts | where: "pinned", true %}
+    {% for post in pinned limit:2 %}
+      {% include post-card.html post=post pinned=true %}
+    {% endfor %}
+
+    <div class="section-heading latest"><span>LATEST</span><span class="rule"></span></div>
+    {% for post in site.posts %}
+      {% unless post.pinned %}
+        {% include post-card.html post=post %}
+      {% endunless %}
+    {% endfor %}
+  </section>
+  {% include sidebar.html %}
+</div>
