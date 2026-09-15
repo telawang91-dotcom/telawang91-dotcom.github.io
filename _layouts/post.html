@@ -5,6 +5,7 @@ layout: default
 {% if page.series_key %}
   {% for s in site.data.series %}{% if s.id == page.series_key %}{% assign structured_series = s %}{% endif %}{% endfor %}
 {% endif %}
+<div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
 <div class="article-layout">
   <article class="article" id="article">
     <header class="article-header">
@@ -34,6 +35,12 @@ layout: default
     {% endif %}
 
     <div class="article-body">{{ content }}</div>
+
+    <div class="article-tools" aria-label="Article tools">
+      <button class="article-tool" id="copy-link" type="button">复制文章链接</button>
+      <button class="article-tool" id="share-article" type="button">分享文章</button>
+      <a class="article-tool rss-link" href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </div>
 
     {% if structured_series %}
     <section class="series-directory">
