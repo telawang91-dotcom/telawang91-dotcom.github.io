@@ -8,14 +8,23 @@ layout: default
   <p class="hero-copy">我关注的不只是让 LLM “能回答”，而是把 Agent 做成可编排、可验证、可观测、能持续迭代的工程系统。</p>
   <p class="hero-meta">深圳大学 · Workflow / RAG / Context Engineering / Multi-Agent / Evaluation / AI Coding</p>
   <div class="hero-actions">
-    <a class="button primary" href="{{ '/learning-map/' | relative_url }}">AI Agent 学习地图</a>
+    <a class="button primary" href="{{ '/tech/' | relative_url }}">Explore Tech Series</a>
+    <a class="button" href="{{ '/learning-map/' | relative_url }}">Learning Map</a>
     <a class="button" href="{{ '/projects/' | relative_url }}">Projects</a>
-    <a class="button" href="{{ site.profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a>
   </div>
   <div class="focus-strip" aria-label="Current focus">
     <div><span>01</span><strong>Agent Runtime</strong><small>Workflow · State Machine · Harness</small></div>
     <div><span>02</span><strong>Context & Retrieval</strong><small>RAG · Memory · Codebase Context</small></div>
     <div><span>03</span><strong>Reliability</strong><small>Tracing · Evaluation · Guardrails</small></div>
+  </div>
+</section>
+
+<section class="home-start-here">
+  <div class="section-heading"><span>START HERE</span><span class="rule"></span></div>
+  <div class="start-here-grid">
+    <a href="{{ '/series/agent-foundations/' | relative_url }}"><span>01</span><strong>第一次系统学 Agent</strong><small>从 LLM、Tool Use、MCP、Memory 到 Planning</small></a>
+    <a href="{{ '/series/workflow-multi-agent/' | relative_url }}"><span>02</span><strong>想理解生产级 Agent</strong><small>State Machine、LangGraph、Multi-Agent Runtime</small></a>
+    <a href="{{ '/series/project-cases/' | relative_url }}"><span>03</span><strong>想快速看工程案例</strong><small>Smart Home、ReproLab、GUI Agent、Harness</small></a>
   </div>
 </section>
 
@@ -28,11 +37,18 @@ layout: default
     {% endfor %}
 
     <div class="section-heading latest"><span>LATEST</span><span class="rule"></span></div>
+    {% assign shown = 0 %}
     {% for post in site.posts %}
-      {% unless post.pinned %}
+      {% unless post.pinned or post.homepage == false %}
         {% include post-card.html post=post %}
+        {% assign shown = shown | plus: 1 %}
+        {% if shown == 8 %}{% break %}{% endif %}
       {% endunless %}
     {% endfor %}
+    <div class="home-more-links">
+      <a class="button" href="{{ '/archive/' | relative_url }}">Browse all articles →</a>
+      <a class="text-link" href="{{ '/tech/' | relative_url }}">Browse by series →</a>
+    </div>
   </section>
   {% include sidebar.html %}
 </div>
