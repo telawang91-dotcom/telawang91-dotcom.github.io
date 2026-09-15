@@ -29,10 +29,12 @@
       url: "/2026/09/15/agent-memory/"
     - no: "06"
       title: "Planning：ReAct、Plan-and-Execute 与结构化计划"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-planning-patterns/"
     - no: "07"
       title: "Agent 的权限、安全与 Human-in-the-loop"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-safety-hitl/"
 
 - id: rag-context
   title: "RAG 与 Context Engineering：让 Agent 拿到正确上下文"
@@ -66,7 +68,8 @@
       url: "/2026/09/13/context-engineering-workspace-codebase/"
     - no: "06"
       title: "Few-shot Retrieval：让历史轨迹成为规划知识"
-      status: planned
+      status: published
+      url: "/2026/09/15/few-shot-retrieval/"
     - no: "07"
       title: "权限 RAG：最小权限、元数据过滤与越权防护"
       status: published
@@ -96,7 +99,8 @@
       url: "/2026/09/15/supervisor-manager-agent/"
     - no: "04"
       title: "产物驱动 Workflow：为什么用 Artifact 推动状态流转"
-      status: planned
+      status: published
+      url: "/2026/09/15/artifact-driven-workflow/"
     - no: "05"
       title: "Retry、Rollback 与 Replan：失败以后怎么继续"
       status: published
@@ -107,7 +111,8 @@
       url: "/2026/09/15/multi-agent-shared-context/"
     - no: "07"
       title: "多 Agent 系统最常见的五类流转 Badcase"
-      status: planned
+      status: published
+      url: "/2026/09/15/multi-agent-badcases/"
 
 - id: evaluation-reliability
   title: "Agent Evaluation 与 Reliability：把智能系统做成工程系统"
@@ -137,13 +142,16 @@
       url: "/2026/09/15/deterministic-agent-evaluation/"
     - no: "05"
       title: "七维评测：从完成率到工程质量"
-      status: planned
+      status: published
+      url: "/2026/09/15/seven-dimension-agent-evaluation/"
     - no: "06"
       title: "Badcase 闭环：知识、规划、工具、执行分层定位"
-      status: planned
+      status: published
+      url: "/2026/09/15/agent-badcase-loop/"
     - no: "07"
       title: "Guardrail 与 CodeCheck：执行后验证为什么不可缺"
-      status: planned
+      status: published
+      url: "/2026/09/15/guardrail-codecheck/"
 
 - id: ai-coding-harness
   title: "AI Coding 与 Agent Harness：从代码上下文到交付闭环"
@@ -162,24 +170,28 @@
       url: "/2026/09/15/codebase-context/"
     - no: "02"
       title: "Workspace Context：任务产物如何跨 Agent 传递"
-      status: planned
+      status: published
+      url: "/2026/09/15/workspace-context/"
     - no: "03"
       title: "Coding Workflow：Spec → Design → Tasks → Code"
       status: published
       url: "/2026/09/15/coding-workflow/"
     - no: "04"
       title: "Script Validation：JSON、Workflow 与 Bash 校验"
-      status: planned
+      status: published
+      url: "/2026/09/15/script-validation/"
     - no: "05"
       title: "无交互评测与真实交互 Harness 有什么差异"
       status: published
       url: "/2026/09/15/offline-eval-vs-interactive-harness/"
     - no: "06"
       title: "Coding Agent 的工具权限与最小权限原则"
-      status: planned
+      status: published
+      url: "/2026/09/15/coding-agent-permissions/"
     - no: "07"
       title: "Benchmark 驱动 Coding Agent 持续迭代"
-      status: planned
+      status: published
+      url: "/2026/09/15/coding-agent-benchmark-loop/"
 
 - id: project-cases
   title: "Agent Project Case Studies：从原型到可运行系统"
