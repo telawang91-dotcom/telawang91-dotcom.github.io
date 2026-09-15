@@ -1,0 +1,16 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+<div class="narrow-page">
+  <p class="eyebrow">TAGS</p>
+  <h1>Topics</h1>
+  {% assign tags = site.tags | sort %}
+  {% for tag in tags %}
+    <section class="tag-section" id="{{ tag[0] | replace: ' ', '-' }}">
+      <h2>{{ tag[0] }} <span>{{ tag[1].size }}</span></h2>
+      {% for post in tag[1] %}<div class="tag-post"><time>{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>{% endfor %}
+    </section>
+  {% endfor %}
+</div>
