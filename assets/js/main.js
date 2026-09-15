@@ -1,10 +1,40 @@
 (() => {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const applyTheme = (theme) => {
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem('theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀' : '◐';
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? '切换到浅色主题' : '切换到深色主题');
+    };
+    applyTheme(document.documentElement.dataset.theme || 'light');
+    themeToggle.addEventListener('click', () => {
+      applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+  }
+
   const article = document.querySelector('.article-body');
   if (article) {
     const words = article.innerText.trim().length;
     const minutes = Math.max(1, Math.round(words / 500));
     const reading = document.getElementById('reading-time');
     if (reading) reading.textContent = `约 ${minutes} 分钟`;
+
+    const progressBar = document.getElementById('reading-progress-bar');
+    if (progressBar) {
+      const updateProgress = () => {
+        const rect = article.getBoundingClientRect();
+        const articleTop = window.scrollY + rect.top;
+        const articleHeight = article.offsetHeight;
+        const viewport = window.innerHeight;
+        const max = Math.max(1, articleHeight - viewport * 0.35);
+        const current = Math.min(max, Math.max(0, window.scrollY - articleTop + viewport * 0.2));
+        progressBar.style.width = `${Math.min(100, (current / max) * 100)}%`;
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+    }
 
     const headings = [...article.querySelectorAll('h2, h3')];
     const tocList = document.getElementById('toc-list');
@@ -52,5 +82,35 @@
       });
       wrap.appendChild(button);
     });
+
+    const copyLink = document.getElementById('copy-link');
+    if (copyLink) {
+      copyLink.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(window.location.href);
+        copyLink.textContent = '已复制';
+        copyLink.dataset.done = 'true';
+        setTimeout(() => {
+          copyLink.textContent = '复制文章链接';
+          copyLink.dataset.done = 'false';
+        }, 1400);
+      });
+    }
+
+    const share = document.getElementById('share-article');
+    if (share) {
+      share.addEventListener('click', async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: document.title, url: window.location.href });
+          } catch (e) {
+            if (e.name !== 'AbortError') console.warn(e);
+          }
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          share.textContent = '链接已复制';
+          setTimeout(() => share.textContent = '分享文章', 1400);
+        }
+      });
+    }
   }
 })();
