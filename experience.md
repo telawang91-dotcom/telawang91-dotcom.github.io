@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Experience
-description: "王新峰的实习与工程实践经历，包含华为、vivo 等实习经历及相关证明材料预览。"
+description: "王新峰的实习与工程实践经历，包含华为、vivo 等实习经历、深圳零一学院实践及相关证明材料预览。"
 permalink: /experience/
 ---
 <div class="narrow-page experience-page">
@@ -21,6 +21,11 @@ permalink: /experience/
         <figure class="offer-preview">
           <a href="{{ '/assets/img/vivo-internship-certificate.png' | relative_url }}" target="_blank" rel="noreferrer"><img src="{{ '/assets/img/vivo-internship-certificate.png' | relative_url }}" alt="vivo 实习证明节选，单位为维沃移动通信（深圳）有限公司，落款日期为 2026 年 6 月 1 日" loading="lazy"></a>
           <figcaption>vivo 实习证明 · 节选预览 · 2026.06.01</figcaption>
+        </figure></div></div>
+      <div class="timeline-item"><div class="timeline-date">2026.01 · 冬季学期</div><div><h3>深圳零一学院 · AI 社会创新实践</h3><p>完成冬季学期 ORIC 课程「AI 赋能社会可持续发展」方向的学习与实践，参与为期 10 天的沉浸式课程与跨学科项目协作。</p>
+        <figure class="offer-preview">
+          <a href="{{ '/assets/img/x-institute-practice-certificate.jpg' | relative_url }}" target="_blank" rel="noreferrer"><img src="{{ '/assets/img/x-institute-practice-certificate.jpg' | relative_url }}" alt="深圳零一学院 ORIC 课程 AI 赋能社会可持续发展方向结营证书，颁发日期为 2026 年 1 月 29 日" loading="lazy"></a>
+          <figcaption>深圳零一学院实践结营证书 · 2026.01.29</figcaption>
         </figure></div></div>
     </div>
   </section>
