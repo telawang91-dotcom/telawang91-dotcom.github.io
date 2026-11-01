@@ -12,7 +12,7 @@ permalink: /about/
 
   <h2>Experience</h2>
   <div class="timeline">
-    <div class="timeline-item"><div class="timeline-date">2026.07 — Now</div><div><h3>Huawei · AI Application Development Intern</h3><p>参与 Agent Harness 的工作流编排、状态管理、上下文工程与评测体系建设。关注状态机、Manager Agent、工具约束、验证闭环与 Benchmark 驱动迭代。</p></div></div>
+    <div class="timeline-item"><div class="timeline-date">2026.07 — Now</div><div><h3>Huawei · AI Application Development Intern</h3><p>参与 Agent Harness 的工作流编排、状态管理、上下文工程与评测体系建设。关注状态机、Manager Agent、工具约束、验证闭环与 Benchmark 驱动迭代。</p><p><a class="text-link" href="{{ '/experience/' | relative_url }}">查看华为实习经历与脱敏录用通知书 ↗</a></p></div></div>
     <div class="timeline-item"><div class="timeline-date">2026.05 — 2026.07</div><div><h3>Autel Robotics · AI Agent Platform Intern</h3><p>围绕 Planner + Executor、结构化执行计划、Agent Trace、确定性评测，以及面向规划的混合检索 RAG 开展工程实践。</p></div></div>
     <div class="timeline-item"><div class="timeline-date">2026.02 — 2026.05</div><div><h3>vivo · GUI Agent Development Intern</h3><p>围绕手机 GUI Agent 的功能树构建、混合检索、路径召回、Agent Planning、Function Calling 与 Badcase 分层优化开展工作。</p></div></div>
   </div>
