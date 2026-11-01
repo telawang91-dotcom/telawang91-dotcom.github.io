@@ -9,6 +9,24 @@ permalink: /experience/
   <h1>实习经历</h1>
   <p class="lead">从工程实践出发，持续探索 AI Agent 在真实任务中的构建、运行与评估。</p>
 
+  <section class="badge-gallery" aria-label="实习工牌记录">
+    <div class="badge-gallery-heading"><span>实习记录</span><span>INTERNSHIP BADGES</span></div>
+    <div class="badge-gallery-grid">
+      <figure class="badge-gallery-item">
+        <a href="{{ '/assets/img/huawei-work-badge.png' | relative_url }}" target="_blank" rel="noreferrer" aria-label="查看华为工牌原图"><img src="{{ '/assets/img/huawei-work-badge.png' | relative_url }}" alt="华为实习工牌" width="434" height="551" loading="lazy"></a>
+        <figcaption>Huawei<span>华为</span></figcaption>
+      </figure>
+      <figure class="badge-gallery-item">
+        <a href="{{ '/assets/img/autel-work-badge.png' | relative_url }}" target="_blank" rel="noreferrer" aria-label="查看道通科技工牌原图"><img src="{{ '/assets/img/autel-work-badge.png' | relative_url }}" alt="道通科技实习工牌" width="434" height="609" loading="lazy"></a>
+        <figcaption>Autel<span>道通科技</span></figcaption>
+      </figure>
+      <figure class="badge-gallery-item">
+        <a href="{{ '/assets/img/vivo-work-badge.png' | relative_url }}" target="_blank" rel="noreferrer" aria-label="查看vivo工牌原图"><img src="{{ '/assets/img/vivo-work-badge.png' | relative_url }}" alt="vivo实习工牌" width="509" height="708" loading="lazy"></a>
+        <figcaption>vivo<span>实习工牌</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="other-experience">
     <div class="timeline">
       <div class="timeline-item"><div class="timeline-date">2026.07 — 至今</div><div><h3>Huawei · AI 应用工程师实习生</h3>
