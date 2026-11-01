@@ -202,6 +202,10 @@
       title: "研发 Agent Harness：规范、上下文与验证闭环"
       status: published
       url: "/2026/11/01/reliable-development-agent-harness/"
+    - no: "09"
+      title: "增量规格与全量知识：让下一次任务从正确事实开始"
+      status: published
+      url: "/2026/11/01/agent-spec-change-lifecycle/"
 
 - id: project-cases
   title: "Agent Project Case Studies：从原型到可运行系统"

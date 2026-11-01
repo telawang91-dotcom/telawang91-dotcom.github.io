@@ -30,11 +30,12 @@ permalink: /experience/
   <section class="other-experience">
     <div class="timeline">
       <div class="timeline-item"><div class="timeline-date">2026.07 — 至今</div><div><h3>Huawei · AI 应用开发实习生</h3>
+        <p><strong>项目：SuperHarness · Agent Harness</strong></p>
         <p>主要参与面向 AI 辅助研发的 Agent Harness 工程实践，围绕规范驱动开发、分层上下文管理、研发工作流编排与自动化质量校验开展工作，关注长任务执行的可验证性、可追溯性与失败恢复。</p>
         <ul>
-          <li><strong>Agent Workflow 与状态管理：</strong>围绕软件研发流程设计产物驱动的工作流，将需求分析、设计、开发、测试和代码检视抽象为状态机，由编排 Agent 统一调度；通过阶段产物、完成条件与校验脚本控制阶段准入，支持失败重试、人工审批和断点恢复。</li>
-          <li><strong>上下文工程：</strong>构建项目级共享知识与仓库级局部知识的双层上下文体系，分别承载全局业务、架构事实与工程约束，以及单服务规格、代码和开发态信息，为不同粒度的研发任务动态提供上下文。</li>
-          <li><strong>自动化评测与质量闭环：</strong>参与组合评测与多维评分体系建设，结合独立脚本校验、代码审查和测试检查阶段产物；通过基准任务与失败样例定位问题，持续驱动 Harness 迭代。</li>
+          <li><strong>Agent Workflow 与状态管理：</strong>基于 IPD 软件研发流程设计产物驱动式 Workflow，将需求分析、设计、开发、DT、检视等阶段抽象为状态机，由 ManagerAgent 统一编排；通过阶段产物、Completion Condition 与 verifyScript 实现机械化准入，并支持失败重试、人工审批与断点续传，使 Agent 从自由流转转向确定性研发流程。</li>
+          <li><strong>上下文工程：</strong>构建 Workspace + Codebase 双层上下文体系，Workspace 沉淀全局业务、架构事实与工程约束，Codebase 承载单服务 SDD、代码及开发态上下文，支持 RR/IR 到 US 不同粒度研发任务的动态上下文注入。</li>
+          <li><strong>自动化评测与质量闭环：</strong>搭建 DSABench 三层组合评测与七维评分体系，并结合 verify.py、CodeReview、DT 等机制对阶段产物进行独立校验；通过 Benchmark / Badcase 持续定位问题并驱动 Harness 迭代，累计支撑 4000+ 次内部调用。</li>
         </ul>
         <p><a class="text-link" href="{{ '/2026/11/01/reliable-development-agent-harness/' | relative_url }}">技术复盘：研发 Agent 的流程、上下文与验证闭环 →</a></p>
         <figure class="offer-preview">

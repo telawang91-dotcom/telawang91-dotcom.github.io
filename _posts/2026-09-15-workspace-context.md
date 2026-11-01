@@ -3,6 +3,7 @@ layout: post
 title: "Workspace Context：任务产物如何跨 Agent 传递？"
 subtitle: "Workspace 不是临时文件夹，而是当前任务可被不同 Agent 读取、验证和接力的状态空间。"
 date: 2026-09-15 18:38:00 +0800
+updated: "2026-11-01"
 series: "AI Coding 与 Agent Harness"
 series_key: ai-coding-harness
 series_index: "02"
@@ -11,6 +12,8 @@ tags: [AI-Coding, Workspace, Context-Engineering, Multi-Agent]
 ---
 
 在 Coding Agent 里，Codebase Context 解决“仓库里有什么”，Workspace Context 解决“当前任务已经做到哪一步”。这两个上下文生命周期完全不同。
+
+本文讨论的是 **Task Workspace（任务工作区）**。跨仓库项目也可能使用 Workspace 保存长期共享的业务与架构知识，那属于 **Project Workspace（项目工作空间）**。名称相同不代表生命周期相同，落地时应在数据结构与文档中明确作用域。
 
 ## Workspace 应该承载什么
 
@@ -55,10 +58,18 @@ Shared Workspace
 
 当任务执行到测试阶段失败，如果前面的 Spec、Design、Tasks 和 Patch 已持久化，就可以从失败点继续，而不是重新让模型生成所有内容。
 
+不过，“状态已保存”不等于“可以直接接着跑”。恢复前应核对产物版本、当前代码和验证输入是否一致：如果中断后设计或依赖发生变化，就需要让相关阶段失效并重新检查。对于已经发送的外部动作，还应先核对实际执行结果，避免重复操作。
+
+## 交接时传递引用、版本与未解决问题
+
+一个实用的交接记录可以包含：任务标识、当前阶段、输入产物引用、输出产物引用、对应版本、验证结论和未解决问题。下一位 Agent 读取的是可定位的产物，而不是一句“前面的工作已完成”。
+
+任务结束后，应将确认有效的规格和设计变化更新到长期知识；探索草稿和失败日志继续保留为任务记录，避免直接混入当前有效事实。相关例子见[增量规格与全量知识]({{ '/2026/11/01/agent-spec-change-lifecycle/' | relative_url }})。
+
 ## 与 Codebase 的边界
 
-Codebase 是长期稳定的仓库事实，Workspace 是当前任务的增量状态。前者更偏 Retrieval，后者更偏 Task Memory / Artifact Store。
+Codebase Context 是随代码演进的仓库事实，Task Workspace 是当前任务的增量状态。前者更偏 Retrieval，后者更偏 Task Memory / Artifact Store；两者都需要版本与失效管理。
 
 ## 面试回答重点
 
-我会把 Workspace 定义成当前任务的动态上下文和产物空间，用结构化 Artifact 在多个 Agent 之间交接，并通过角色视图控制每个 Agent 能看到什么。这样比共享完整对话更可控，也天然支持断点恢复和评测。
+在任务范围内，我会把 Task Workspace 定义成动态上下文和产物空间，用结构化 Artifact 在多个 Agent 之间交接，并通过角色视图控制每个 Agent 能看到什么。配合版本记录、证据检查和恢复逻辑，这些产物可以为断点恢复和评测提供依据。

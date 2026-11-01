@@ -3,6 +3,7 @@ layout: post
 title: "Codebase Context：大仓库到底应该怎么被 Coding Agent 理解？"
 subtitle: "真正的问题不是把多少代码塞进 Context，而是如何让 Agent 在需要时找到正确的代码结构和依赖。"
 date: 2026-09-15 18:43:00 +0800
+updated: "2026-11-01"
 series: "AI Coding 与 Agent Harness"
 series_key: ai-coding-harness
 series_index: "01"
@@ -88,16 +89,20 @@ Edit
 
 ## Codebase Context 要和 Workspace 分开
 
-Codebase 是长期事实；Workspace 是当前任务产生的临时 Artifact，例如 Plan、Patch、Test Log。
+本文用 Task Workspace 表示当前任务产生的 Artifact，例如 Plan、Patch、Test Log；Codebase Context 则表示仓库范围内、需要随代码更新的事实。
 
 两者生命周期不同：
 
 ```text
 Codebase Context → repository-scoped
-Workspace       → task-scoped
+Task Workspace  → task-scoped
 ```
 
 如果混在一起，旧任务的 Patch 和日志可能污染后续检索。
+
+还有一种常见用法是 Project Workspace：它表示跨仓库的项目空间，保存共享业务概念、接口契约和工程约束。这与本文的 Task Workspace 不是同一层。涉及多个服务时，可以按“项目共享事实 → 相关仓库 → 本次任务”组织上下文，再按修改范围读取必要内容。
+
+例如修改订单状态接口，除了当前服务实现，还应补充状态枚举的共享定义、消费方的兼容要求和对应测试。召回片段最好携带来源路径与版本；文档与代码不一致时，应先确认差异，而不是让摘要覆盖原始事实。更完整的分层讨论见[研发 Agent Harness]({{ '/2026/11/01/reliable-development-agent-harness/' | relative_url }})。
 
 ## 什么时候需要摘要
 
