@@ -29,15 +29,33 @@ permalink: /experience/
 
   <section class="other-experience">
     <div class="timeline">
-      <div class="timeline-item"><div class="timeline-date">2026.07 — 至今</div><div><h3>Huawei · AI 应用工程师实习生</h3>
+      <div class="timeline-item"><div class="timeline-date">2026.07 — 至今</div><div><h3>Huawei · AI 应用开发实习生</h3>
         <p>主要参与面向 AI 辅助研发的 Agent Harness 工程实践，围绕规范驱动开发、分层上下文管理、研发工作流编排与自动化质量校验开展工作，关注长任务执行的可验证性、可追溯性与失败恢复。</p>
+        <ul>
+          <li><strong>Agent Workflow 与状态管理：</strong>围绕软件研发流程设计产物驱动的工作流，将需求分析、设计、开发、测试和代码检视抽象为状态机，由编排 Agent 统一调度；通过阶段产物、完成条件与校验脚本控制阶段准入，支持失败重试、人工审批和断点恢复。</li>
+          <li><strong>上下文工程：</strong>构建项目级共享知识与仓库级局部知识的双层上下文体系，分别承载全局业务、架构事实与工程约束，以及单服务规格、代码和开发态信息，为不同粒度的研发任务动态提供上下文。</li>
+          <li><strong>自动化评测与质量闭环：</strong>参与组合评测与多维评分体系建设，结合独立脚本校验、代码审查和测试检查阶段产物；通过基准任务与失败样例定位问题，持续驱动 Harness 迭代。</li>
+        </ul>
         <p><a class="text-link" href="{{ '/2026/11/01/reliable-development-agent-harness/' | relative_url }}">技术复盘：研发 Agent 的流程、上下文与验证闭环 →</a></p>
         <figure class="offer-preview">
           <a href="{{ '/assets/img/huawei-internship-certificate.png' | relative_url }}" target="_blank" rel="noreferrer"><img src="{{ '/assets/img/huawei-internship-certificate.png' | relative_url }}" alt="华为实习证明节选，盖章单位为华为技术有限公司，落款日期为 2026 年 10 月 16 日" loading="lazy"></a>
           <figcaption>华为实习证明 · 节选预览 · 2026.10.16</figcaption>
         </figure></div></div>
-      <div class="timeline-item"><div class="timeline-date">2026.05 — 2026.07</div><div><h3>Autel Robotics · AI Agent Platform Intern</h3><p>围绕 Planner + Executor、结构化执行计划、Agent Trace、确定性评测，以及面向规划的混合检索 RAG 开展工程实践。</p></div></div>
-      <div class="timeline-item"><div class="timeline-date">2026.02 — 2026.05</div><div><h3>vivo · GUI Agent Development Intern</h3><p>围绕手机 GUI Agent 的功能树构建、混合检索、路径召回、Agent Planning、Function Calling 与 Badcase 分层优化开展工作。</p>
+      <div class="timeline-item"><div class="timeline-date">2026.05 — 2026.07</div><div><h3>道通科技 · AI Agent 平台实习生</h3>
+        <p>面向具身智能的 LLM Agent 引擎（Harness），围绕执行引擎、任务规划、确定性评测和混合检索开展工程实践。</p>
+        <ul>
+          <li><strong>Agent 执行引擎与任务规划：</strong>设计结构化中间表示（IR/DSL）作为 Agent 可执行计划，采用 Planner + Executor 架构，由 LLM 负责理解与规划，Executor 确定性调度工具执行；引入多级执行预算、自我批判与异常终止机制，降低死循环风险。</li>
+          <li><strong>自动化评测与可观测性：</strong>针对 LLM-as-Judge 结果不稳定的问题，将标准答案与 Agent Trace 统一解析为 AST，基于前置条件、动作序列和终态断言进行确定性比对；搭建覆盖无人机、编码、油田等场景的 200+ Benchmark 回归集，通过全链路 Tracing 区分模型规划错误与工具执行错误。</li>
+          <li><strong>RAG 与数据驱动规划优化：</strong>构建关键词与 bge 向量双路召回、RRF 融合的混合检索 RAG，为 Planner 动态检索 Few-shot 示例并组装 Prompt；设计高置信模板直用、低置信向量降级及人在回路的数据沉淀机制，通过语料迭代持续优化 Agent 行为，无需额外微调。</li>
+        </ul>
+      </div></div>
+      <div class="timeline-item"><div class="timeline-date">2026.02 — 2026.05</div><div><h3>vivo · GUI Agent 开发实习生</h3>
+        <p>面向手机 GUI Agent 的自然语言控机能力，参与功能树与知识库构建、路径检索、规划执行和 Badcase 分层优化。</p>
+        <ul>
+          <li><strong>GUI 功能树与知识库建设：</strong>基于 ADB 与 DFS 遍历 App 功能页面，将页面描述、控件语义、动作类型和预期变化结构化为 JSON 功能树；覆盖 47 款 App、累计 5000+ 功能节点，为模型数据生产与页面知识库建设提供基础。</li>
+          <li><strong>混合检索与指令执行：</strong>基于功能树构建混合检索 RAG，采用关键词与向量双路召回、RRF 融合及元数据过滤检索操作路径；接入 Agent Planning 与 Function Calling，通过 ADB 工具执行指令。在 4000 条指令测试集中，Top5 路径命中率达到 92%。</li>
+          <li><strong>Badcase 分层评测与优化：</strong>围绕真实任务建立“知识覆盖 → 路径召回 → 模型规划 → 工具执行”的分层评测闭环，定位失败根因；通过知识补全、RAG 召回优化、泛化样本扩展及 ADB 工具完善进行针对性修复，并用回归评测验证效果。</li>
+        </ul>
         <figure class="offer-preview">
           <a href="{{ '/assets/img/vivo-internship-certificate.png' | relative_url }}" target="_blank" rel="noreferrer"><img src="{{ '/assets/img/vivo-internship-certificate.png' | relative_url }}" alt="vivo 实习证明节选，单位为维沃移动通信（深圳）有限公司，落款日期为 2026 年 6 月 1 日" loading="lazy"></a>
           <figcaption>vivo 实习证明 · 节选预览 · 2026.06.01</figcaption>
