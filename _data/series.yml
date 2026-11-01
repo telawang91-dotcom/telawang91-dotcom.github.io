@@ -1,252 +1,252 @@
 - id: agent-foundations
-  title: "AI Agent �������� LLM �� Tool-Using Agent"
+  title: "AI Agent 基础：从 LLM 到 Tool-Using Agent"
   short_title: "Agent Foundations"
   category: "Agent Fundamentals"
-  description: "�� Agent �Ļ�����ɿ�ʼ��ϵͳ���� Tool Use��Function Calling��MCP��Memory �� Planning��"
+  description: "从 Agent 的基本组成开始，系统理解 Tool Use、Function Calling、MCP、Memory 与 Planning。"
   accent: "01"
   chapters:
     - no: "00"
-      title: "�ܸ٣�AI Agent �����ڽ��ʲô���⣿"
+      title: "总纲：AI Agent 到底在解决什么问题？"
       status: published
       url: "/2026/09/15/agent-foundations-overview/"
     - no: "01"
-      title: "�� LLM �� Agent��ģ�͡�״̬�������뻷��"
+      title: "从 LLM 到 Agent：模型、状态、工具与环境"
       status: published
       url: "/2026/09/15/from-llm-to-agent/"
     - no: "02"
-      title: "Function Calling��ģ�����ѧ����ù���"
+      title: "Function Calling：模型如何学会调用工具"
       status: published
       url: "/2026/09/15/function-calling/"
     - no: "03"
-      title: "MCP��Ϊʲô�� Function Calling ����ҪЭ���"
+      title: "MCP：为什么有 Function Calling 还需要协议层"
       status: published
       url: "/2026/09/14/mcp-and-function-calling/"
     - no: "04"
-      title: "Tool Schema �� Tool Router�����߶����Ժ���ô��"
+      title: "Tool Schema 与 Tool Router：工具多了以后怎么办"
       status: published
       url: "/2026/09/15/tool-schema-router/"
     - no: "05"
-      title: "Memory�����ڼ��䡢���ڼ�����ɿ��ٻ�"
+      title: "Memory：短期记忆、长期记忆与可控召回"
       status: published
       url: "/2026/09/15/agent-memory/"
     - no: "06"
-      title: "Planning��ReAct��Plan-and-Execute ��ṹ���ƻ�"
+      title: "Planning：ReAct、Plan-and-Execute 与结构化计划"
       status: published
       url: "/2026/09/15/agent-planning-patterns/"
     - no: "07"
-      title: "Agent ��Ȩ�ޡ���ȫ�� Human-in-the-loop"
+      title: "Agent 的权限、安全与 Human-in-the-loop"
       status: published
       url: "/2026/09/15/agent-safety-hitl/"
 
 - id: rag-context
-  title: "RAG �� Context Engineering���� Agent �õ���ȷ������"
+  title: "RAG 与 Context Engineering：让 Agent 拿到正确上下文"
   short_title: "RAG & Context"
   category: "Retrieval & Context"
-  description: "�Ӽ�������������װ���ص����� Agent �����е�֪ʶ��ʾ����������빤���������ġ�"
+  description: "从检索到上下文组装，重点讨论 Agent 场景中的知识、示例、代码库与工作区上下文。"
   accent: "02"
   chapters:
     - no: "00"
-      title: "�ܸ٣�Agent ��������Ϊʲô�� Prompt ����Ҫ"
+      title: "总纲：Agent 的上下文为什么比 Prompt 更重要"
       status: published
       url: "/2026/09/15/rag-context-overview/"
     - no: "01"
-      title: "RAG ������Chunk��Embedding��Vector Search"
+      title: "RAG 基础：Chunk、Embedding、Vector Search"
       status: published
       url: "/2026/09/15/rag-basics/"
     - no: "02"
-      title: "Hybrid Search���ؼ��ʡ������� RRF �ں�"
+      title: "Hybrid Search：关键词、向量与 RRF 融合"
       status: published
       url: "/2026/09/15/hybrid-search/"
     - no: "03"
-      title: "RAG Badcase��֪ʶ���д�ȴ����������ô�Ų�"
+      title: "RAG Badcase：知识库有答案却检索不到怎么排查"
       status: published
       url: "/2026/09/15/rag-badcase-debugging/"
     - no: "04"
-      title: "Agent Planning �� RAG��Ϊʲô���ʴ� RAG ��һ��"
+      title: "Agent Planning 的 RAG，为什么和问答 RAG 不一样"
       status: published
       url: "/2026/09/08/rag-for-agent-planning/"
     - no: "05"
-      title: "Context Engineering��Workspace �� Codebase"
+      title: "Context Engineering：Workspace 与 Codebase"
       status: published
       url: "/2026/09/13/context-engineering-workspace-codebase/"
     - no: "06"
-      title: "Few-shot Retrieval������ʷ�켣��Ϊ�滮֪ʶ"
+      title: "Few-shot Retrieval：让历史轨迹成为规划知识"
       status: published
       url: "/2026/09/15/few-shot-retrieval/"
     - no: "07"
-      title: "Ȩ�� RAG����СȨ�ޡ�Ԫ���ݹ�����ԽȨ����"
+      title: "权限 RAG：最小权限、元数据过滤与越权防护"
       status: published
       url: "/2026/09/15/permission-aware-rag/"
 
 - id: workflow-multi-agent
-  title: "Workflow �� Multi-Agent����������ת���ɿر���"
+  title: "Workflow 与 Multi-Agent：从自由流转到可控编排"
   short_title: "Workflow & Multi-Agent"
   category: "Agent Runtime"
-  description: "Χ��״̬����LangGraph��Supervisor��Manager Agent ��� Agent �쳣�����������ɿ�ִ�бջ���"
+  description: "围绕状态机、LangGraph、Supervisor、Manager Agent 与多 Agent 异常处理，构建可控执行闭环。"
   accent: "03"
   chapters:
     - no: "00"
-      title: "�ܸ٣�Ϊʲô Agent ��Ҫ Runtime"
+      title: "总纲：为什么 Agent 需要 Runtime"
       status: published
       url: "/2026/09/15/agent-runtime-overview/"
     - no: "01"
-      title: "Ϊʲô Agent Workflow ��Ҫ״̬��"
+      title: "为什么 Agent Workflow 需要状态机"
       status: published
       url: "/2026/09/12/why-agent-workflow-needs-state-machine/"
     - no: "02"
-      title: "LangGraph Ϊʲô���ʺ� Multi-Agent"
+      title: "LangGraph 为什么更适合 Multi-Agent"
       status: published
       url: "/2026/09/03/langgraph-for-multi-agent/"
     - no: "03"
-      title: "Supervisor �� Manager Agent��������ô�ַ�"
+      title: "Supervisor 与 Manager Agent：任务怎么分发"
       status: published
       url: "/2026/09/15/supervisor-manager-agent/"
     - no: "04"
-      title: "�������� Workflow��Ϊʲô�� Artifact �ƶ�״̬��ת"
+      title: "产物驱动 Workflow：为什么用 Artifact 推动状态流转"
       status: published
       url: "/2026/09/15/artifact-driven-workflow/"
     - no: "05"
-      title: "Retry��Rollback �� Replan��ʧ���Ժ���ô����"
+      title: "Retry、Rollback 与 Replan：失败以后怎么继续"
       status: published
       url: "/2026/09/15/retry-rollback-replan/"
     - no: "06"
-      title: "�� Agent ���������ģ�����ʲô��������ʲô"
+      title: "多 Agent 共享上下文：共享什么，不共享什么"
       status: published
       url: "/2026/09/15/multi-agent-shared-context/"
     - no: "07"
-      title: "�� Agent ϵͳ�����������ת Badcase"
+      title: "多 Agent 系统最常见的五类流转 Badcase"
       status: published
       url: "/2026/09/15/multi-agent-badcases/"
 
 - id: evaluation-reliability
-  title: "Agent Evaluation �� Reliability��������ϵͳ���ɹ���ϵͳ"
+  title: "Agent Evaluation 与 Reliability：把智能系统做成工程系统"
   short_title: "Evaluation & Reliability"
   category: "Reliability"
-  description: "���� Trace��Benchmark��ȷ������֤��LLM-as-Judge �� Badcase ���������������ɿ�����ϵ��"
+  description: "建立 Trace、Benchmark、确定性验证、LLM-as-Judge 与 Badcase 驱动迭代的完整可靠性体系。"
   accent: "04"
   chapters:
     - no: "00"
-      title: "�ܸ٣�Ϊʲô Agent ������������������"
+      title: "总纲：为什么 Agent 的评测比聊天机器人难"
       status: published
       url: "/2026/09/15/evaluation-overview/"
     - no: "01"
-      title: "Tracing��һ�� Agent ʧ�ܵ��״�����һ��"
+      title: "Tracing：一次 Agent 失败到底错在哪一层"
       status: published
       url: "/2026/09/11/agent-tracing/"
     - no: "02"
-      title: "Benchmark�������������ܻع�� Agent ����"
+      title: "Benchmark：如何设计真正能回归的 Agent 任务集"
       status: published
       url: "/2026/09/15/agent-benchmark/"
     - no: "03"
-      title: "LLM-as-Judge Ϊʲô���ȶ����Լ�ʲôʱ������"
+      title: "LLM-as-Judge 为什么不稳定，以及什么时候还能用"
       status: published
       url: "/2026/09/15/llm-as-judge/"
     - no: "04"
-      title: "AST / Assertion�������ȷ����ִ�н���ȶ�"
+      title: "AST / Assertion：如何做确定性执行结果比对"
       status: published
       url: "/2026/09/15/deterministic-agent-evaluation/"
     - no: "05"
-      title: "��ά���⣺������ʵ���������"
+      title: "七维评测：从完成率到工程质量"
       status: published
       url: "/2026/09/15/seven-dimension-agent-evaluation/"
     - no: "06"
-      title: "Badcase �ջ���֪ʶ���滮�����ߡ�ִ�зֲ㶨λ"
+      title: "Badcase 闭环：知识、规划、工具、执行分层定位"
       status: published
       url: "/2026/09/15/agent-badcase-loop/"
     - no: "07"
-      title: "Guardrail �� CodeCheck��ִ�к���֤Ϊʲô����ȱ"
+      title: "Guardrail 与 CodeCheck：执行后验证为什么不可缺"
       status: published
       url: "/2026/09/15/guardrail-codecheck/"
 
 - id: ai-coding-harness
-  title: "AI Coding �� Agent Harness���Ӵ��������ĵ������ջ�"
+  title: "AI Coding 与 Agent Harness：从代码上下文到交付闭环"
   short_title: "AI Coding & Harness"
   category: "Coding Agent"
-  description: "Χ�� Codebase Context��Workspace��Coding Agent Workflow������ִ�С���֤�� Benchmark չ����"
+  description: "围绕 Codebase Context、Workspace、Coding Agent Workflow、工具执行、验证与 Benchmark 展开。"
   accent: "05"
   chapters:
     - no: "00"
-      title: "�ܸ٣�Coding Agent ���ױ���ͨ Agent ����ʲô"
+      title: "总纲：Coding Agent 到底比普通 Agent 多了什么"
       status: published
       url: "/2026/09/10/coding-agent-harness/"
     - no: "01"
-      title: "Codebase Context����ֿ���α� Agent ����"
+      title: "Codebase Context：大仓库如何被 Agent 理解"
       status: published
       url: "/2026/09/15/codebase-context/"
     - no: "02"
-      title: "Workspace Context�����������ο� Agent ����"
+      title: "Workspace Context：任务产物如何跨 Agent 传递"
       status: published
       url: "/2026/09/15/workspace-context/"
     - no: "03"
-      title: "Coding Workflow��Spec �� Design �� Tasks �� Code"
+      title: "Coding Workflow：Spec → Design → Tasks → Code"
       status: published
       url: "/2026/09/15/coding-workflow/"
     - no: "04"
-      title: "Script Validation��JSON��Workflow �� Bash У��"
+      title: "Script Validation：JSON、Workflow 与 Bash 校验"
       status: published
       url: "/2026/09/15/script-validation/"
     - no: "05"
-      title: "�޽�����������ʵ���� Harness ��ʲô����"
+      title: "无交互评测与真实交互 Harness 有什么差异"
       status: published
       url: "/2026/09/15/offline-eval-vs-interactive-harness/"
     - no: "06"
-      title: "Coding Agent �Ĺ���Ȩ������СȨ��ԭ��"
+      title: "Coding Agent 的工具权限与最小权限原则"
       status: published
       url: "/2026/09/15/coding-agent-permissions/"
     - no: "07"
-      title: "Benchmark ���� Coding Agent ��������"
+      title: "Benchmark 驱动 Coding Agent 持续迭代"
       status: published
       url: "/2026/09/15/coding-agent-benchmark-loop/"
 
     - no: "08"
-      title: "�з� Agent Harness���淶������������֤�ջ�"
+      title: "研发 Agent Harness：规范、上下文与验证闭环"
       status: published
       url: "/2026/11/01/reliable-development-agent-harness/"
 
 - id: project-cases
-  title: "Agent Project Case Studies����ԭ�͵�������ϵͳ"
+  title: "Agent Project Case Studies：从原型到可运行系统"
   short_title: "Project Case Studies"
   category: "Case Studies"
-  description: "�ù�����Ŀ����������ʵ������ Agent ϵͳ��������ƣ����� Smart Home��ReproLab��GUI Agent���ṹ�� Planning �� Harness��"
+  description: "用公开项目与脱敏工程实践复盘 Agent 系统的完整设计，包括 Smart Home、ReproLab、GUI Agent、结构化 Planning 与 Harness。"
   accent: "06"
   chapters:
     - no: "00"
-      title: "�ܸ٣���ô��һ�� Agent Demo ���ɿ�չʾ�������е�ϵͳ"
+      title: "总纲：怎么把一个 Agent Demo 做成可展示、可运行的系统"
       status: published
       url: "/2026/09/15/agent-demo-to-system/"
     - no: "01"
-      title: "Smart Home����֪��Ԥ�⡪���ߡ���֤��ִ�бջ�"
+      title: "Smart Home：感知—预测—决策—验证—执行闭环"
       status: published
       url: "/2026/09/09/smart-home-agent-loop/"
     - no: "02"
-      title: "Smart Home���������������쳣ֵ������ɸѡ"
+      title: "Smart Home：传感器抖动、异常值与数据筛选"
       status: published
       url: "/2026/09/15/smart-home-sensor-data/"
     - no: "03"
-      title: "ReproLab�����ſ��� Agent ������ѪԵ���"
+      title: "ReproLab：可信科研 Agent 的数据血缘设计"
       status: published
       url: "/2026/09/15/reprolab-provenance/"
     - no: "04"
-      title: "ReproLab��Planner / Executor / Critic �Ĺ��̱߽�"
+      title: "ReproLab：Planner / Executor / Critic 的工程边界"
       status: published
       url: "/2026/09/15/reprolab-agent-boundaries/"
     - no: "05"
-      title: "GUI Agent����������·�������� Tool Execution"
+      title: "GUI Agent：功能树、路径检索与 Tool Execution"
       status: published
       url: "/2026/09/15/gui-agent-function-tree/"
     - no: "06"
-      title: "����Ŀ README ���������ͣ���ι������﹤�����"
+      title: "从项目 README 到技术博客：如何公开表达工程深度"
       status: published
       url: "/2026/09/15/public-engineering-writing/"
     - no: "07"
-      title: "GUI Agent��Badcase ��ô��һ��ʧ�ܱ�ɻع��ʲ�"
+      title: "GUI Agent：Badcase 怎么从一次失败变成回归资产"
       status: published
       url: "/2026/09/15/gui-agent-badcase-loop/"
     - no: "08"
-      title: "����ʵ����Ϊʲô�ṹ�� Plan + Executor ���ʺϿ����� Agent"
+      title: "工程实践：为什么结构化 Plan + Executor 更适合可评测 Agent"
       status: published
       url: "/2026/09/15/structured-plan-executor/"
     - no: "09"
-      title: "����ʵ����Agent Harness ��ΰ� Workflow��Context �� Evaluation ���ɱջ�"
+      title: "工程实践：Agent Harness 如何把 Workflow、Context 和 Evaluation 串成闭环"
       status: published
       url: "/2026/09/15/agent-harness-closed-loop/"
