@@ -92,6 +92,18 @@ description: "Wang Xinfeng 的公开 AI Agent 工程项目：ReproLab、Smart Ho
     </div>
   </article>
 
+  <article class="project-showcase compact-project">
+    <div class="project-copy">
+      <div class="project-kicker">GUI AGENT · KNOWLEDGE PIPELINE</div>
+      <h2>GUI 操作知识库与指令泛化 Agent</h2>
+      <p class="project-slogan">将界面操作路径转化为可检索的语义知识与多样化指令。</p>
+      <p>结合手机截图、多模态解析与深度优先探索构建 GUI 交互树，再通过节点扁平化、语义增强、意图归类和六类指令泛化，连接界面理解与自然语言操作知识。</p>
+      <div class="project-metrics"><span>ADB</span><span>Multimodal LLM</span><span>GUI Tree</span><span>BM25</span><span>Instruction Augmentation</span></div>
+      <div class="repo-actions"><a class="button primary" href="https://github.com/telawang91-dotcom/vivo-gui-instruction-agent" target="_blank" rel="noreferrer">GitHub Repository ↗</a><a class="button" href="https://github.com/telawang91-dotcom/vivo-gui-instruction-agent/tree/main/docs" target="_blank" rel="noreferrer">System Design ↗</a></div>
+    </div>
+    <div class="project-note"><span>PROJECT DOCUMENTATION</span><p>仓库提供项目介绍与系统设计文档，说明采集、构建、检索与任务恢复机制；当前不包含完整源码与原始采集数据。</p></div>
+  </article>
+
   <section class="project-footer-note">
     <p>更多代码与实验项目见 <a class="text-link" href="https://github.com/telawang91-dotcom" target="_blank" rel="noreferrer">github.com/telawang91-dotcom ↗</a></p>
   </section>
