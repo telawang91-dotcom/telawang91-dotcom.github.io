@@ -35,20 +35,19 @@ permalink: /experience/
   </section>
 
   <section class="offer-section">
-    <div class="section-heading"><span>OFFER LETTER</span><span class="rule"></span></div>
-    <h2>实习录用通知书</h2>
-    <p class="offer-intro">以下为本人收到的华为实习生录用通知书节选预览。为保护个人隐私，薪酬与签署信息已隐藏；此图片为脱敏展示版本，不是完整原件。</p>
+    <div class="section-heading"><span>INTERNSHIP CERTIFICATE</span><span class="rule"></span></div>
+    <h2>华为实习证明</h2>
+    <p class="offer-intro">以下为华为实习证明节选，记录实习期间的工作表现。点击图片可查看原尺寸。</p>
     <figure class="offer-preview">
-      <img src="{{ '/assets/img/huawei-internship-offer-preview.svg' | relative_url }}" alt="华为实习生录用通知书脱敏预览，显示 AI 应用工程师岗位及深圳实习地点，薪酬信息已隐藏" loading="lazy">
-      <figcaption>Huawei Internship Offer · Redacted preview</figcaption>
+      <a href="{{ '/assets/img/huawei-internship-certificate.png' | relative_url }}" target="_blank" rel="noreferrer"><img src="{{ '/assets/img/huawei-internship-certificate.png' | relative_url }}" alt="华为实习证明节选，盖章单位为华为技术有限公司，落款日期为 2026 年 10 月 16 日" loading="lazy"></a>
+      <figcaption>华为实习证明 · 节选预览 · 2026.10.16</figcaption>
     </figure>
     <div class="offer-meta">
-      <div><span>录用岗位</span><strong>AI 应用工程师</strong></div>
-      <div><span>实习地点</span><strong>深圳</strong></div>
-      <div><span>签署日期</span><strong>2026.06.27</strong></div>
-      <div><span>材料说明</span><strong>个人留存的历史录用材料</strong></div>
+      <div><span>单位名称</span><strong>华为技术有限公司</strong></div>
+      <div><span>证明日期</span><strong>2026.10.16</strong></div>
+      <div><span>材料类型</span><strong>实习证明</strong></div>
+      <div><span>展示形式</span><strong>原件节选预览</strong></div>
     </div>
-    <p class="offer-disclaimer">注：通知书原件载明的签署确认期限及报到有效期均为 2026 年的历史日期。此处仅用于记录个人经历，不构成当前有效的录用或报到凭证。</p>
   </section>
 
   <section class="other-experience">
