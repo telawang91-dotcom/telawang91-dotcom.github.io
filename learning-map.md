@@ -97,6 +97,12 @@ permalink: /learning-map/
     {% endfor %}
   </section>
 
+  <aside class="roadmap-note" aria-label="模型推理服务延伸阅读">
+    <strong>延伸阅读 · 模型推理服务</strong>
+    <p>如果 Agent 慢在模型调用，先从 KV Cache、请求调度和首 token 延迟入手。</p>
+    <a class="text-link" href="{{ '/2026/11/05/vllm-serving-notes/' | relative_url }}">vLLM 学习笔记 →</a>
+  </aside>
+
   <aside class="roadmap-note" aria-label="贯穿全图的工程原则">
     <strong>贯穿全图的工程原则</strong>
     <p>模型负责理解、生成和提出决策。工程系统负责记录状态、限制权限、执行操作、验证结果和处理失败。</p>
