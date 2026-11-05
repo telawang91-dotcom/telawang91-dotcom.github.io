@@ -3,6 +3,7 @@ layout: post
 title: "读阿甘的 Agent Harness 系列：失败能不能重放？"
 subtitle: "把模型决策和工程执行分开看，才能决定一次改动应该怎么验。"
 date: 2026-11-05 12:00:00 +0800
+continue_reading: "/2026/09/15/agent-benchmark/"
 category: Tech
 tags: [Harness, Evaluation, Tracing]
 ---

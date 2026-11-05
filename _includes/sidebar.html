@@ -1,55 +1,19 @@
 <aside class="sidebar">
   <section class="sidebar-block profile-block">
     <img class="avatar-photo" src="https://avatars.githubusercontent.com/u/246070491?v=4" alt="Wang Xinfeng GitHub avatar" loading="lazy">
-    <h2>ABOUT ME</h2>
+    <h2>关于作者</h2>
     <p class="profile-name">{{ site.profile.name }}</p>
-    <p>{{ site.profile.role }}. Focus on workflow orchestration, context engineering, RAG, multi-agent systems and evaluation.</p>
+    <p>关注 Agent 的工作流编排、检索与评测。</p>
     <p class="muted">{{ site.profile.school }}</p>
-    <p class="sidebar-links"><a href="{{ '/about/' | relative_url }}">About →</a><a href="{{ site.profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a></p>
-  </section>
-
-  <section class="sidebar-block now-block">
-    <h2>NOW</h2>
-    <dl class="now-list">
-      <div><dt>Building</dt><dd>Reliable Agent systems</dd></div>
-      <div><dt>Writing</dt><dd>AI Agent Engineering</dd></div>
-      <div><dt>Exploring</dt><dd>AI Coding & Agent Harness</dd></div>
-    </dl>
+    <p class="sidebar-links"><a href="{{ '/about/' | relative_url }}">了解更多 →</a><a href="{{ site.profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a></p>
   </section>
 
   <section class="sidebar-block">
-    <div class="sidebar-title-row"><h2>SERIES PROGRESS</h2><a href="{{ '/tech/' | relative_url }}">ALL →</a></div>
-    <div class="series-progress-list">
-      {% for s in site.data.series %}
-        {% assign published_count = 0 %}
-        {% for ch in s.chapters %}{% if ch.status == 'published' %}{% assign published_count = published_count | plus: 1 %}{% endif %}{% endfor %}
-        {% assign pct = published_count | times: 100 | divided_by: s.chapters.size %}
-        <a class="series-progress-item" href="{{ '/series/' | append: s.id | append: '/' | relative_url }}">
-          <div><span>{{ s.accent }}</span><strong>{{ s.short_title }}</strong><small>{{ published_count }}/{{ s.chapters.size }}</small></div>
-          <div class="series-progress-track"><i style="width:{{ pct }}%"></i></div>
-        </a>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section class="sidebar-block">
-    <h2>RECOMMENDED</h2>
-    <p class="sidebar-note">Curated core reads — not traffic ranking.</p>
-    <ol class="recommended-list">
-      <li><a href="{{ '/2026/09/15/agent-foundations-overview/' | relative_url }}"><span>01</span><strong>AI Agent 到底在解决什么问题？</strong></a></li>
-      <li><a href="{{ '/2026/09/15/rag-badcase-debugging/' | relative_url }}"><span>02</span><strong>RAG Badcase 怎么分层排查</strong></a></li>
-      <li><a href="{{ '/2026/09/12/why-agent-workflow-needs-state-machine/' | relative_url }}"><span>03</span><strong>为什么 Workflow 需要状态机</strong></a></li>
-      <li><a href="{{ '/2026/09/11/agent-tracing/' | relative_url }}"><span>04</span><strong>Agent Tracing：失败错在哪一层</strong></a></li>
-      <li><a href="{{ '/2026/09/10/coding-agent-harness/' | relative_url }}"><span>05</span><strong>Coding Agent 与 Agent Harness</strong></a></li>
-    </ol>
-  </section>
-
-  <section class="sidebar-block">
-    <h2>FEATURED PROJECTS</h2>
+    <h2>项目源码</h2>
     <ul class="link-list project-link-list">
       <li><a href="https://github.com/telawang91-dotcom/reprolab" target="_blank" rel="noreferrer">ReproLab ↗</a><span>可信科研 Agent 工作台 · Provenance / Reproduction</span></li>
       <li><a href="https://github.com/telawang91-dotcom/smart-home-multi-agent" target="_blank" rel="noreferrer">Smart Home Multi-Agent ↗</a><span>LangGraph · Supervisor · Home Assistant</span></li>
     </ul>
-    <p><a class="text-link" href="{{ '/projects/' | relative_url }}">All projects →</a></p>
+    <p><a class="text-link" href="{{ '/projects/' | relative_url }}">查看项目 →</a></p>
   </section>
 </aside>

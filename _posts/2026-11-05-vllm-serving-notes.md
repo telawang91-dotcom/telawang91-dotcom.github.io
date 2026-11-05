@@ -3,6 +3,7 @@ layout: post
 title: "vLLM 学习笔记：长 Prompt 进来时，GPU 怎么分时间和显存？"
 subtitle: "从一条 Coding Agent 请求出发，理解 KV Cache、PagedAttention、连续批处理和延迟指标。"
 date: 2026-11-05 15:00:00 +0800
+continue_reading: "/2026/09/11/agent-tracing/"
 category: Tech
 tags: [vLLM, AI-Infra, LLM-Serving, KV-Cache, Agent]
 ---

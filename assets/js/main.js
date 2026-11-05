@@ -38,7 +38,10 @@
 
     const headings = [...article.querySelectorAll('h2, h3')];
     const tocList = document.getElementById('toc-list');
+    const mobileToc = document.getElementById('mobile-toc');
+    const mobileTocList = document.getElementById('mobile-toc-list');
     if (tocList && headings.length) {
+      document.getElementById('toc').hidden = false;
       headings.forEach((h, i) => {
         if (!h.id) h.id = `section-${i + 1}`;
         const a = document.createElement('a');
@@ -47,7 +50,14 @@
         a.dataset.text = h.textContent.toLowerCase();
         a.className = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
         tocList.appendChild(a);
+        if (mobileTocList) {
+          const mobileLink = a.cloneNode(true);
+          mobileLink.addEventListener('click', () => { mobileToc.open = false; });
+          mobileTocList.appendChild(mobileLink);
+        }
       });
+
+      if (mobileTocList) mobileToc.hidden = false;
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -66,6 +76,13 @@
         tocList.querySelectorAll('a').forEach(a => a.hidden = q && !a.dataset.text.includes(q));
       });
     }
+
+    article.querySelectorAll('table').forEach(table => {
+      const wrap = document.createElement('div');
+      wrap.className = 'article-table-scroll';
+      table.before(wrap);
+      wrap.appendChild(table);
+    });
 
     article.querySelectorAll('pre').forEach(pre => {
       const wrap = document.createElement('div');

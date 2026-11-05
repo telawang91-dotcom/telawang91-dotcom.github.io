@@ -10,29 +10,19 @@ layout: default
   <article class="article" id="article">
     <header class="article-header">
       {% if structured_series %}
-        <p class="eyebrow"><a href="{{ '/series/' | append: structured_series.id | append: '/' | relative_url }}">{{ structured_series.short_title }}</a>{% if page.series_index %} · CHAPTER {{ page.series_index }}{% endif %}</p>
+        <p class="eyebrow"><a href="{{ '/series/' | append: structured_series.id | append: '/' | relative_url }}">{{ structured_series.short_title }}</a>{% if page.series_index %} · 第 {{ page.series_index }} 章{% endif %}</p>
       {% elsif page.series %}
         <p class="eyebrow">{{ page.series }}{% if page.series_index %} · {{ page.series_index }}{% endif %}</p>
       {% endif %}
       <h1>{{ page.title }}</h1>
       {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}
-      <div class="article-meta">Posted by Wang Xinfeng · {{ page.date | date: "%Y-%m-%d" }}{% if page.updated %} · 更新于 {{ page.updated }}{% endif %} · <span id="reading-time">约 -- 分钟</span></div>
+      <div class="article-meta">王新峰 · {{ page.date | date: "%Y-%m-%d" }}{% if page.updated %} · 更新于 {{ page.updated }}{% endif %} · <span id="reading-time">约 -- 分钟</span></div>
     </header>
 
-    {% if structured_series %}
-    <div class="series-note structured">
-      <div>
-        <strong>{{ structured_series.title }}</strong>
-        <span>本文是该系列的第 {{ page.series_index }} 章。{{ structured_series.description }}</span>
-      </div>
-      <a href="{{ '/series/' | append: structured_series.id | append: '/' | relative_url }}">查看系列总纲 →</a>
-    </div>
-    {% elsif page.series %}
-    <div class="series-note">
-      <strong>{{ page.series }}</strong>
-      <span>{{ page.series_note | default: "这组文章围绕 Agent 工程中的关键组件与工程取舍展开。" }}</span>
-    </div>
-    {% endif %}
+    <details class="mobile-toc" id="mobile-toc" hidden>
+      <summary>本文目录</summary>
+      <nav id="mobile-toc-list" aria-label="本文目录"></nav>
+    </details>
 
     <div class="article-body">{{ content }}</div>
 
@@ -64,18 +54,29 @@ layout: default
     </section>
     {% endif %}
 
-    <div class="post-nav">
-      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><small>← PREVIOUS</small><strong>{{ page.previous.title }}</strong></a>{% endif %}
-      {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><small>NEXT →</small><strong>{{ page.next.title }}</strong></a>{% endif %}
-    </div>
+    {% assign next_read = nil %}
+    {% if structured_series %}
+      {% assign found_current = false %}
+      {% for chapter in structured_series.chapters %}
+        {% if chapter.url == page.url %}
+          {% assign found_current = true %}
+        {% elsif found_current and chapter.featured and chapter.status == 'published' and chapter.url %}
+          {% assign next_read = chapter %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% elsif page.continue_reading %}
+      {% assign next_read = site.posts | where: 'url', page.continue_reading | first %}
+    {% endif %}
 
-    <div class="article-end">
-      <p>如果这篇文章帮助你建立了更完整的 Agent 工程视角，可以继续查看 <a href="{{ '/tech/' | relative_url }}">Tech Series</a> 或 <a href="{{ '/learning-map/' | relative_url }}">AI Agent Learning Map</a>。</p>
-    </div>
+    <nav class="post-nav" aria-label="继续阅读">
+      <a href="{{ '/learning-map/' | relative_url }}{% if structured_series %}#{{ structured_series.id }}{% endif %}"><small>← 浏览学习路线</small><strong>返回学习地图</strong></a>
+      {% if next_read %}<a class="next" href="{{ next_read.url | relative_url }}"><small>继续阅读 →</small><strong>{{ next_read.title | escape }}</strong></a>{% endif %}
+    </nav>
   </article>
-  <aside class="toc" id="toc">
-    <div class="toc-title">OUTLINE</div>
-    <input id="toc-filter" type="search" placeholder="Filter headings…" aria-label="Filter headings">
+  <aside class="toc" id="toc" hidden>
+    <div class="toc-title">本文目录</div>
+    <input id="toc-filter" type="search" placeholder="筛选小节…" aria-label="筛选小节">
     <nav id="toc-list"></nav>
   </aside>
 </div>

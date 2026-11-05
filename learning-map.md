@@ -27,32 +27,33 @@ permalink: /learning-map/
   <section id="reading-paths" class="roadmap-section" aria-labelledby="paths-title">
     <p class="eyebrow">01 / START HERE</p>
     <h2 id="paths-title">按目标选一条路线</h2>
+    <p class="roadmap-hint">每一步直达文章。第一次来，选一条符合当前目标的路线，从第一篇开始。</p>
     <div class="roadmap-paths">
       <article>
         <h3>做出第一个 Agent</h3>
         <p>适合会调用模型 API、想做出一个能查资料和调用工具的小项目的读者。</p>
         <ol>
-          <li><a href="#agent-foundations">理解工具调用与权限</a></li>
-          <li><a href="#rag-context">接入检索与上下文</a></li>
-          <li><a href="#workflow-multi-agent">把步骤组织成工作流</a></li>
+          <li><a href="{{ '/2026/09/15/agent-foundations-overview/' | relative_url }}">理解工具调用与权限</a></li>
+          <li><a href="{{ '/2026/09/15/rag-context-overview/' | relative_url }}">接入检索与上下文</a></li>
+          <li><a href="{{ '/2026/09/12/why-agent-workflow-needs-state-machine/' | relative_url }}">把步骤组织成工作流</a></li>
         </ol>
       </article>
       <article>
         <h3>让现有 Demo 更可靠</h3>
         <p>适合已经跑通原型，正在处理失败恢复、错误定位和回归评测的读者。</p>
         <ol>
-          <li><a href="#workflow-multi-agent">记录状态与恢复路径</a></li>
-          <li><a href="#evaluation-reliability">用 Trace 和评测定位问题</a></li>
-          <li><a href="#project-cases">对照真实案例检查设计</a></li>
+          <li><a href="{{ '/2026/11/05/agent-checkpoint-idempotency/' | relative_url }}">记录状态与恢复路径</a></li>
+          <li><a href="{{ '/2026/09/11/agent-tracing/' | relative_url }}">用 Trace 和评测定位问题</a></li>
+          <li><a href="{{ '/2026/09/09/smart-home-agent-loop/' | relative_url }}">对照真实案例检查设计</a></li>
         </ol>
       </article>
       <article>
         <h3>构建 Coding Agent</h3>
         <p>适合关注代码库上下文、工具权限和自动验证，想跑通一次代码交付的读者。</p>
         <ol>
-          <li><a href="#ai-coding-harness">串起规格、代码修改与验证</a></li>
-          <li><a href="#evaluation-reliability">建立可重复运行的评测</a></li>
-          <li><a href="#project-cases">复盘 Harness 的工程分工</a></li>
+          <li><a href="{{ '/2026/11/01/reliable-development-agent-harness/' | relative_url }}">串起规格、代码修改与验证</a></li>
+          <li><a href="{{ '/2026/09/15/agent-benchmark/' | relative_url }}">建立可重复运行的评测</a></li>
+          <li><a href="{{ '/2026/09/15/reprolab-agent-boundaries/' | relative_url }}">看 ReproLab 如何划分规划、执行和验证</a></li>
         </ol>
       </article>
     </div>
