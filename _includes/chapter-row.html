@@ -1,0 +1,14 @@
+{% assign chapter = include.chapter %}
+{% if chapter.status == 'published' and chapter.url %}
+  <a class="chapter-row published" href="{{ chapter.url | relative_url }}">
+    <span class="chapter-no">{{ chapter.no }}</span>
+    <span class="chapter-title">{{ chapter.title | escape }}</span>
+    <span class="chapter-status">阅读 →</span>
+  </a>
+{% else %}
+  <div class="chapter-row planned">
+    <span class="chapter-no">{{ chapter.no }}</span>
+    <span class="chapter-title">{{ chapter.title | escape }}</span>
+    <span class="chapter-status">计划中</span>
+  </div>
+{% endif %}

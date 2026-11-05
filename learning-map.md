@@ -5,10 +5,11 @@ description: 从工具调用、RAG 和 Agent 编排，到评测、Coding Agent �
 permalink: /learning-map/
 ---
 {% assign series = site.data.series %}
-{% assign total_published = 0 %}
+{% assign total_featured = 0 %}
 {% for item in series %}
   {% assign published = item.chapters | where: 'status', 'published' %}
-  {% assign total_published = total_published | plus: published.size %}
+  {% assign featured = published | where: 'featured', true %}
+  {% assign total_featured = total_featured | plus: featured.size %}
 {% endfor %}
 
 <div class="wide-page roadmap">
@@ -20,7 +21,7 @@ permalink: /learning-map/
       <a class="button primary" href="#reading-paths">选择学习路线 ↓</a>
       <a class="button" href="#series-map">查看全部系列 ↓</a>
     </div>
-    <p class="roadmap-stats">{{ series.size }} 个系列 <span aria-hidden="true">·</span> {{ total_published }} 篇已发布文章</p>
+    <p class="roadmap-stats">{{ series.size }} 个系列 <span aria-hidden="true">·</span> {{ total_featured }} 篇主线文章</p>
   </header>
 
   <section id="reading-paths" class="roadmap-section" aria-labelledby="paths-title">
@@ -60,7 +61,7 @@ permalink: /learning-map/
   <section id="series-map" class="roadmap-section" aria-labelledby="series-title">
     <p class="eyebrow">02 / SERIES INDEX</p>
     <h2 id="series-title">从基础到项目实战</h2>
-    <p class="roadmap-hint">初读先看总纲。遇到具体问题，可以展开目录直达文章。</p>
+    <p class="roadmap-hint">每个系列只推荐几篇主线文章。术语、实现细节和延伸阅读放在各自的系列页。</p>
     <nav class="roadmap-jump" aria-label="系列导航">
       {% for item in series %}
         <a href="#{{ item.id }}">{{ item.accent }} {{ item.short_title | escape }}</a>
@@ -69,23 +70,24 @@ permalink: /learning-map/
 
     {% for item in series %}
       {% assign published = item.chapters | where: 'status', 'published' %}
+      {% assign featured = published | where: 'featured', true %}
       {% assign overview = published | where: 'no', '00' | first %}
       {% assign series_url = '/series/' | append: item.id | append: '/' %}
       <article class="roadmap-series" id="{{ item.id }}">
         <span class="roadmap-number" aria-hidden="true">{{ item.accent }}</span>
         <div>
-          <p class="roadmap-meta">{{ item.category | escape }} <span aria-hidden="true">·</span> {{ published.size }} 篇已发布</p>
+          <p class="roadmap-meta">{{ item.category | escape }} <span aria-hidden="true">·</span> {{ featured.size }} 篇主线</p>
           <h3>{{ item.title | escape }}</h3>
           <p>{{ item.description | escape }}</p>
           <p class="roadmap-check"><strong>读完试着回答</strong> {{ item.roadmap_check | escape }}</p>
           <div class="roadmap-actions">
             {% if overview %}<a class="text-link" href="{{ overview.url | relative_url }}">阅读总纲 →</a>{% endif %}
-            <a href="{{ series_url | relative_url }}">打开系列页 →</a>
+            <a href="{{ series_url | relative_url }}">系列页与补充笔记 →</a>
           </div>
           <details>
-            <summary>查看章节目录</summary>
+            <summary>查看主线文章</summary>
             <ul class="roadmap-chapters">
-              {% for chapter in published %}
+              {% for chapter in featured %}
                 <li><a href="{{ chapter.url | relative_url }}"><span aria-hidden="true">{{ chapter.no }}</span>{{ chapter.title | escape }}</a></li>
               {% endfor %}
             </ul>

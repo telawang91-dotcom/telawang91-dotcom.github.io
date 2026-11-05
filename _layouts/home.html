@@ -30,20 +30,11 @@ layout: default
 
 <div class="content-grid">
   <section class="post-column">
-    <div class="section-heading"><span>PINNED</span><span class="rule"></span></div>
-    {% assign pinned = site.posts | where: "pinned", true %}
-    {% for post in pinned limit:2 %}
-      {% include post-card.html post=post pinned=true %}
-    {% endfor %}
-
-    <div class="section-heading latest"><span>LATEST</span><span class="rule"></span></div>
-    {% assign shown = 0 %}
-    {% for post in site.posts %}
-      {% unless post.pinned or post.homepage == false %}
-        {% include post-card.html post=post %}
-        {% assign shown = shown | plus: 1 %}
-        {% if shown == 8 %}{% break %}{% endif %}
-      {% endunless %}
+    <div class="section-heading"><span>工程实践与学习心得</span><span class="rule"></span></div>
+    {% assign featured_urls = '/2026/11/01/reliable-development-agent-harness/|/2026/09/15/reprolab-provenance/|/2026/09/09/smart-home-agent-loop/|/2026/11/05/agent-replay-reading-notes/' | split: '|' %}
+    {% for url in featured_urls %}
+      {% assign post = site.posts | where: 'url', url | first %}
+      {% if post %}{% include post-card.html post=post %}{% endif %}
     {% endfor %}
     <div class="home-more-links">
       <a class="button" href="{{ '/archive/' | relative_url }}">Browse all articles →</a>

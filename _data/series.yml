@@ -7,6 +7,7 @@
   roadmap_check: 模型提出工具调用后，哪些参数、权限和执行结果需要由程序验证？
   chapters:
     - no: "00"
+      featured: true
       title: "总纲：AI Agent 到底在解决什么问题？"
       status: published
       url: "/2026/09/15/agent-foundations-overview/"
@@ -15,10 +16,12 @@
       status: published
       url: "/2026/09/15/from-llm-to-agent/"
     - no: "02"
+      featured: true
       title: "Function Calling：模型如何学会调用工具"
       status: published
       url: "/2026/09/15/function-calling/"
     - no: "03"
+      featured: true
       title: "MCP：为什么有 Function Calling 还需要协议层"
       status: published
       url: "/2026/09/14/mcp-and-function-calling/"
@@ -35,6 +38,7 @@
       status: published
       url: "/2026/09/15/agent-planning-patterns/"
     - no: "07"
+      featured: true
       title: "Agent 的权限、安全与 Human-in-the-loop"
       status: published
       url: "/2026/09/15/agent-safety-hitl/"
@@ -48,6 +52,7 @@
   roadmap_check: 知识库里明明有答案，如何区分切分、召回、排序和上下文组装的问题？
   chapters:
     - no: "00"
+      featured: true
       title: "总纲：Agent 的上下文为什么比 Prompt 更重要"
       status: published
       url: "/2026/09/15/rag-context-overview/"
@@ -56,10 +61,12 @@
       status: published
       url: "/2026/09/15/rag-basics/"
     - no: "02"
+      featured: true
       title: "Hybrid Search：关键词、向量与 RRF 融合"
       status: published
       url: "/2026/09/15/hybrid-search/"
     - no: "03"
+      featured: true
       title: "RAG Badcase：知识库有答案却检索不到怎么排查"
       status: published
       url: "/2026/09/15/rag-badcase-debugging/"
@@ -76,6 +83,7 @@
       status: published
       url: "/2026/09/15/few-shot-retrieval/"
     - no: "07"
+      featured: true
       title: "权限 RAG：最小权限、元数据过滤与越权防护"
       status: published
       url: "/2026/09/15/permission-aware-rag/"
@@ -89,10 +97,12 @@
   roadmap_check: 执行到一半失败时，如何判断应当重试、回滚还是重新规划？
   chapters:
     - no: "00"
+      featured: true
       title: "总纲：为什么 Agent 需要 Runtime"
       status: published
       url: "/2026/09/15/agent-runtime-overview/"
     - no: "01"
+      featured: true
       title: "为什么 Agent Workflow 需要状态机"
       status: published
       url: "/2026/09/12/why-agent-workflow-needs-state-machine/"
@@ -101,6 +111,7 @@
       status: published
       url: "/2026/09/03/langgraph-for-multi-agent/"
     - no: "03"
+      featured: true
       title: "Supervisor 与 Manager Agent：任务怎么分发"
       status: published
       url: "/2026/09/15/supervisor-manager-agent/"
@@ -109,6 +120,7 @@
       status: published
       url: "/2026/09/15/artifact-driven-workflow/"
     - no: "05"
+      featured: true
       title: "Retry、Rollback 与 Replan：失败以后怎么继续"
       status: published
       url: "/2026/09/15/retry-rollback-replan/"
@@ -130,10 +142,12 @@
   roadmap_check: 怎样把一次偶发失败变成能复现、能定位、能防止回归的测试？
   chapters:
     - no: "00"
+      featured: true
       title: "总纲：为什么 Agent 的评测比聊天机器人难"
       status: published
       url: "/2026/09/15/evaluation-overview/"
     - no: "01"
+      featured: true
       title: "Tracing：一次 Agent 失败到底错在哪一层"
       status: published
       url: "/2026/09/11/agent-tracing/"
@@ -146,6 +160,7 @@
       status: published
       url: "/2026/09/15/llm-as-judge/"
     - no: "04"
+      featured: true
       title: "AST / Assertion：如何做确定性执行结果比对"
       status: published
       url: "/2026/09/15/deterministic-agent-evaluation/"
@@ -154,6 +169,7 @@
       status: published
       url: "/2026/09/15/seven-dimension-agent-evaluation/"
     - no: "06"
+      featured: true
       title: "Badcase 闭环：知识、规划、工具、执行分层定位"
       status: published
       url: "/2026/09/15/agent-badcase-loop/"
@@ -171,10 +187,12 @@
   roadmap_check: 一次跨文件改动需要哪些上下文、执行权限和验收证据？
   chapters:
     - no: "00"
+      featured: true
       title: "总纲：Coding Agent 到底比普通 Agent 多了什么"
       status: published
       url: "/2026/09/10/coding-agent-harness/"
     - no: "01"
+      featured: true
       title: "Codebase Context：大仓库如何被 Agent 理解"
       status: published
       url: "/2026/09/15/codebase-context/"
@@ -195,6 +213,7 @@
       status: published
       url: "/2026/09/15/offline-eval-vs-interactive-harness/"
     - no: "06"
+      featured: true
       title: "Coding Agent 的工具权限与最小权限原则"
       status: published
       url: "/2026/09/15/coding-agent-permissions/"
@@ -204,10 +223,12 @@
       url: "/2026/09/15/coding-agent-benchmark-loop/"
 
     - no: "08"
+      featured: true
       title: "研发 Agent Harness：规范、上下文与验证闭环"
       status: published
       url: "/2026/11/01/reliable-development-agent-harness/"
     - no: "09"
+      featured: true
       title: "增量规格与全量知识：让下一次任务从正确事实开始"
       status: published
       url: "/2026/11/01/agent-spec-change-lifecycle/"
@@ -221,10 +242,12 @@
   roadmap_check: 选一个案例，能否画出它的输入、状态、验证环节和失败回退路径？
   chapters:
     - no: "00"
+      featured: true
       title: "总纲：怎么把一个 Agent Demo 做成可展示、可运行的系统"
       status: published
       url: "/2026/09/15/agent-demo-to-system/"
     - no: "01"
+      featured: true
       title: "Smart Home：感知—预测—决策—验证—执行闭环"
       status: published
       url: "/2026/09/09/smart-home-agent-loop/"
@@ -233,6 +256,7 @@
       status: published
       url: "/2026/09/15/smart-home-sensor-data/"
     - no: "03"
+      featured: true
       title: "ReproLab：可信科研 Agent 的数据血缘设计"
       status: published
       url: "/2026/09/15/reprolab-provenance/"
@@ -241,6 +265,7 @@
       status: published
       url: "/2026/09/15/reprolab-agent-boundaries/"
     - no: "05"
+      featured: true
       title: "GUI Agent：功能树、路径检索与 Tool Execution"
       status: published
       url: "/2026/09/15/gui-agent-function-tree/"

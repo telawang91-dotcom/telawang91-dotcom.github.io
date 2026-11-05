@@ -44,14 +44,15 @@ layout: default
 
     {% if structured_series %}
     <section class="series-directory">
-      <div class="series-directory-title">SERIES · {{ structured_series.title }}</div>
+      <div class="series-directory-title">主线文章 · {{ structured_series.short_title }}</div>
       {% for ch in structured_series.chapters %}
         {% if ch.status == 'published' and ch.url %}
-          <a href="{{ ch.url | relative_url }}" {% if ch.no == page.series_index %}class="current"{% endif %}><span>{{ ch.no }}</span>{{ ch.title }}</a>
-        {% else %}
-          <div class="series-directory-planned"><span>{{ ch.no }}</span><span>{{ ch.title }}</span><small>PLANNED</small></div>
+          {% if ch.featured or ch.url == page.url %}
+            <a href="{{ ch.url | relative_url }}" {% if ch.url == page.url %}class="current" aria-current="page"{% endif %}><span>{{ ch.no }}</span>{{ ch.title | escape }}</a>
+          {% endif %}
         {% endif %}
       {% endfor %}
+      <p><a class="text-link" href="{{ '/series/' | append: structured_series.id | append: '/' | relative_url }}">查看系列页与补充笔记 →</a></p>
     </section>
     {% elsif page.series %}
     {% assign series_posts = site.posts | where: "series", page.series | reverse %}

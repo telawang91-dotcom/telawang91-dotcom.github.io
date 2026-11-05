@@ -1,129 +1,41 @@
 ---
 layout: post
 title: "Supervisor 与 Manager Agent：任务到底应该怎么分发？"
-subtitle: "Manager Agent 不应该只是一个更大的 Prompt，而应该承担任务拆解、路由、约束和收敛。"
+subtitle: "先把任务放回一条工作流，再决定哪些步骤值得交给独立 Agent。"
 date: 2026-09-15 18:36:00 +0800
 series: "Workflow 与 Multi-Agent"
 series_key: workflow-multi-agent
 series_index: "03"
 category: Tech
 tags: [Multi-Agent, Supervisor, Manager-Agent, Workflow]
+updated: 2026-11-05
 ---
 
-Multi-Agent 系统最容易写成一种“Agent 互相聊天”的结构：Manager 收到任务后，把自然语言丢给某个 Worker，再看结果决定下一步。
+设计 Supervisor 时，我会先画一张执行图，把每个节点需要读取的状态、可以调用的工具和完成条件写出来。画完之后，有些所谓的角色只需要一条规则。比如设备 ID 有歧义就请用户确认，执行结果与预期不符就停止并读回状态。这两步写进工作流就可以独立测试。
 
-Demo 可以这样做，但工程系统需要更清晰的职责边界。
+## 先确定为什么要拆
 
-## Manager Agent 的四个核心职责
+阿甘在讨论多 Agent 时给了一条简短的起点。
 
-### 1. Task Decomposition
+> 先用一个 agent 加更好的工具。
 
-把用户目标拆成可执行子任务，而不是直接把原任务转发给 Worker。
+他的判断条件包括隔离上下文、并行完成独立任务，以及给专业角色配置不同能力。把这三个条件用到设计评审里，我会问：拆完以后，究竟是哪项约束更容易兑现？[阿甘的博客 · 多 agent：编排、handoff 与 A2A](https://arganzheng.life/multi-agent-orchestration-handoff-and-a2a.html)
 
-```text
-Goal
-  ↓
-Subtask A
-Subtask B
-Subtask C
-```
+以 [Smart Home 项目](/2026/09/09/smart-home-agent-loop/) 为背景，假设用户说「把客厅调舒服一点」。下面是用于讨论架构的简化情景。
 
-每个子任务最好有：输入、预期产物、依赖关系、完成条件。
+| 任务 | 先怎么实现 | 什么情况下值得拆 |
+| --- | --- | --- |
+| 读取温湿度和设备状态 | 对几个只读接口并行调用 | 调用本身已经能并行，先用普通工具 |
+| 生成设备调整方案 | 由规划节点产出带设备 ID 的动作候选 | 规划要检索大量历史资料时，可以单独隔离检索上下文 |
+| 检查权限和执行动作 | 用明确规则校验，执行器只接收通过校验的动作 | 读写权限可以直接由不同工具限制 |
+| 确认设备最终状态 | 再读取一次状态并与目标比较 | 设备返回超时就进入恢复分支，保留执行前后的证据 |
 
-### 2. Routing
+## 让 Supervisor 看产物和证据
 
-决定哪个 Agent 最适合执行哪一步。
+假设确实需要一个独立的检索 Agent。交给它的输入可以只有任务 ID、检索范围和输出格式。它返回引用的记录 ID、支持的结论和未解决的问题，Supervisor 据此决定是否继续。设备执行凭据、完整对话和其他房间的数据都可以留在原来的节点。
 
-路由不只看语义，还要考虑：
+写操作返回超时尤其值得单测。此时设备可能已经执行了动作，直接重试会再次触发写入。先读回设备状态，再根据动作是否幂等、目标是否已达成和原权限是否仍有效，决定继续、重试还是交由用户确认。
 
-- Agent 能力；
-- Tool 权限；
-- 当前状态；
-- 成本；
-- 是否需要并行。
+架构评审时，我会用同一批任务比较单 Agent 工作流和拆分后的版本，重点看完成条件、额外调用次数和失败定位时间。只要拆分解决的是具体约束，比较结果就能告诉我该保留哪个边界。
 
-### 3. State Convergence
-
-Worker 返回结果以后，Manager 不应该只把文本拼起来，而应该把结果写回结构化状态：
-
-```json
-{
-  "task_id": "T3",
-  "status": "done",
-  "artifact": "design.md",
-  "confidence": 0.91
-}
-```
-
-这样后续节点可以确定性判断。
-
-### 4. Failure Handling
-
-Worker 失败时，Manager 需要区分：
-
-```text
-Retry
-Reassign
-Replan
-Escalate to human
-Terminate
-```
-
-而不是统一回复“请重新尝试”。
-
-## 为什么 Manager 不应该掌握所有细节
-
-如果 Manager 既负责规划、执行、校验、上下文管理，又知道所有 Tool Schema，它会迅速变成一个超级 Agent。
-
-更合理的结构是：
-
-```text
-Manager
-  ├─ Planner / Router
-  ├─ Worker A
-  ├─ Worker B
-  └─ Validator
-```
-
-Manager 控制方向，Worker 做具体任务，Validator 独立检查结果。
-
-## 如何防止分配不合理
-
-可以在任务分发前建立 Agent Capability Registry：
-
-```json
-{
-  "agent": "coding_agent",
-  "capabilities": ["edit_code", "run_test"],
-  "tools": ["filesystem", "shell"],
-  "risk": "medium"
-}
-```
-
-路由时先做能力匹配和权限过滤，再让 LLM 做语义判断。
-
-## Worker 完不成怎么办
-
-一个常见策略是：
-
-```text
-Worker Failed
-   ↓
-Is transient error?
-   ├─ Yes → Retry
-   └─ No
-       ↓
-Can another worker handle it?
-   ├─ Yes → Reassign
-   └─ No
-       ↓
-Is plan wrong?
-   ├─ Yes → Replan
-   └─ No → Human / Fail
-```
-
-这比让模型自由决定稳定得多。
-
-## 面试里怎么说
-
-> 我把 Manager Agent 看成控制面，而不是一个什么都做的超级 Agent。它主要负责任务拆解、能力路由、状态收敛和异常处理；具体执行交给 Worker，结果再经过 Validator。分发时会结合 Agent Capability、Tool 权限和当前 Workflow State，而不是只靠一个 Prompt 做语义匹配。
+延伸阅读：[Retry、Rollback 与 Replan](/2026/09/15/retry-rollback-replan/)。
