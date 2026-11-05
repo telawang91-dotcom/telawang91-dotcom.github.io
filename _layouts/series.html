@@ -5,6 +5,7 @@ layout: default
 {% for item in site.data.series %}{% if item.id == page.series_key %}{% assign s = item %}{% endif %}{% endfor %}
 <div class="series-page wide-page">
   <a class="series-back" href="{{ '/tech/' | relative_url }}">← Tech / Series</a>
+  <a class="series-back" href="{{ '/learning-map/' | relative_url | append: '#' | append: s.id }}">← 返回学习地图</a>
   <header class="series-hero">
     <div class="series-number">{{ s.accent }}</div>
     <div>

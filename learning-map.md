@@ -1,25 +1,103 @@
 ---
 layout: default
-title: AI Agent Learning Map
+title: AI Agent 工程学习地图
+description: 从工具调用、RAG 和 Agent 编排，到评测、Coding Agent 与项目复盘。按学习目标选择路线，直接阅读系列总纲与章节。
 permalink: /learning-map/
 ---
-<div class="wide-page">
-  <p class="eyebrow">ROADMAP</p>
-  <h1>AI Agent Engineering Learning Map</h1>
-  <p class="lead">从“让模型会调用工具”到“让 Agent 系统可控、可验证、可迭代”。这张图也是这个博客的长期内容目录。</p>
+{% assign series = site.data.series %}
+{% assign total_published = 0 %}
+{% for item in series %}
+  {% assign published = item.chapters | where: 'status', 'published' %}
+  {% assign total_published = total_published | plus: published.size %}
+{% endfor %}
 
-  <div class="map-grid">
-    <section class="map-card"><div class="map-index">01</div><h2>Foundation</h2><p>LLM · Prompt · Structured Output · JSON Schema · API</p><a href="{{ '/tags/#Foundation' | relative_url }}">进入基础层 →</a></section>
-    <section class="map-card"><div class="map-index">02</div><h2>Tool Use</h2><p>Function Calling · MCP · Tool Schema · Permission · Retry</p><a href="{{ '/tags/#Tool-Use' | relative_url }}">进入工具层 →</a></section>
-    <section class="map-card"><div class="map-index">03</div><h2>Retrieval & Context</h2><p>RAG · Hybrid Search · RRF · Rerank · Memory · Context Engineering</p><a href="{{ '/tags/#RAG' | relative_url }}">进入上下文层 →</a></section>
-    <section class="map-card"><div class="map-index">04</div><h2>Agent Runtime</h2><p>Planning · Planner/Executor · Workflow · State Machine · Checkpoint</p><a href="{{ '/tags/#Workflow' | relative_url }}">进入运行时 →</a></section>
-    <section class="map-card"><div class="map-index">05</div><h2>Multi-Agent</h2><p>Supervisor · Manager Agent · Delegation · Shared State · Handoff</p><a href="{{ '/tags/#Multi-Agent' | relative_url }}">进入多智能体 →</a></section>
-    <section class="map-card"><div class="map-index">06</div><h2>Evaluation & Reliability</h2><p>Tracing · Benchmark · Badcase · Guardrail · Deterministic Check · HITL</p><a href="{{ '/tags/#Evaluation' | relative_url }}">进入评测层 →</a></section>
-    <section class="map-card"><div class="map-index">07</div><h2>AI Coding</h2><p>Codebase Context · Workspace · Coding Agent · Harness · Verification</p><a href="{{ '/tags/#AI-Coding' | relative_url }}">进入 AI Coding →</a></section>
-  </div>
+<div class="wide-page roadmap">
+  <header class="roadmap-hero">
+    <p class="eyebrow">LEARNING MAP / AI AGENT ENGINEERING</p>
+    <h1>AI Agent 工程学习地图</h1>
+    <p class="roadmap-intro">从第一次工具调用，到能追踪、验证和恢复的 Agent 系统。初学可以从基础读起，手上有项目也可以按当前卡点直达对应章节。</p>
+    <div class="roadmap-actions">
+      <a class="button primary" href="#reading-paths">选择学习路线 ↓</a>
+      <a class="button" href="#series-map">查看全部系列 ↓</a>
+    </div>
+    <p class="roadmap-stats">{{ series.size }} 个系列 <span aria-hidden="true">·</span> {{ total_published }} 篇已发布文章</p>
+  </header>
 
-  <div class="map-principle">
-    <strong>主线原则</strong>
-    <span>LLM 负责理解与生成不确定性决策；工程系统负责状态、权限、执行、验证和恢复。</span>
-  </div>
+  <section id="reading-paths" class="roadmap-section" aria-labelledby="paths-title">
+    <p class="eyebrow">01 / START HERE</p>
+    <h2 id="paths-title">按目标选一条路线</h2>
+    <div class="roadmap-paths">
+      <article>
+        <h3>做出第一个 Agent</h3>
+        <p>适合会调用模型 API、想做出一个能查资料和调用工具的小项目的读者。</p>
+        <ol>
+          <li><a href="#agent-foundations">理解工具调用与权限</a></li>
+          <li><a href="#rag-context">接入检索与上下文</a></li>
+          <li><a href="#workflow-multi-agent">把步骤组织成工作流</a></li>
+        </ol>
+      </article>
+      <article>
+        <h3>让现有 Demo 更可靠</h3>
+        <p>适合已经跑通原型，正在处理失败恢复、错误定位和回归评测的读者。</p>
+        <ol>
+          <li><a href="#workflow-multi-agent">记录状态与恢复路径</a></li>
+          <li><a href="#evaluation-reliability">用 Trace 和评测定位问题</a></li>
+          <li><a href="#project-cases">对照真实案例检查设计</a></li>
+        </ol>
+      </article>
+      <article>
+        <h3>构建 Coding Agent</h3>
+        <p>适合关注代码库上下文、工具权限和自动验证，想跑通一次代码交付的读者。</p>
+        <ol>
+          <li><a href="#ai-coding-harness">串起规格、代码修改与验证</a></li>
+          <li><a href="#evaluation-reliability">建立可重复运行的评测</a></li>
+          <li><a href="#project-cases">复盘 Harness 的工程分工</a></li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section id="series-map" class="roadmap-section" aria-labelledby="series-title">
+    <p class="eyebrow">02 / SERIES INDEX</p>
+    <h2 id="series-title">从基础到项目实战</h2>
+    <p class="roadmap-hint">初读先看总纲。遇到具体问题，可以展开目录直达文章。</p>
+    <nav class="roadmap-jump" aria-label="系列导航">
+      {% for item in series %}
+        <a href="#{{ item.id }}">{{ item.accent }} {{ item.short_title | escape }}</a>
+      {% endfor %}
+    </nav>
+
+    {% for item in series %}
+      {% assign published = item.chapters | where: 'status', 'published' %}
+      {% assign overview = published | where: 'no', '00' | first %}
+      {% assign series_url = '/series/' | append: item.id | append: '/' %}
+      <article class="roadmap-series" id="{{ item.id }}">
+        <span class="roadmap-number" aria-hidden="true">{{ item.accent }}</span>
+        <div>
+          <p class="roadmap-meta">{{ item.category | escape }} <span aria-hidden="true">·</span> {{ published.size }} 篇已发布</p>
+          <h3>{{ item.title | escape }}</h3>
+          <p>{{ item.description | escape }}</p>
+          <p class="roadmap-check"><strong>读完试着回答</strong> {{ item.roadmap_check | escape }}</p>
+          <div class="roadmap-actions">
+            {% if overview %}<a class="text-link" href="{{ overview.url | relative_url }}">阅读总纲 →</a>{% endif %}
+            <a href="{{ series_url | relative_url }}">打开系列页 →</a>
+          </div>
+          <details>
+            <summary>查看章节目录</summary>
+            <ul class="roadmap-chapters">
+              {% for chapter in published %}
+                <li><a href="{{ chapter.url | relative_url }}"><span aria-hidden="true">{{ chapter.no }}</span>{{ chapter.title | escape }}</a></li>
+              {% endfor %}
+            </ul>
+          </details>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+
+  <aside class="roadmap-note" aria-label="贯穿全图的工程原则">
+    <strong>贯穿全图的工程原则</strong>
+    <p>模型负责理解、生成和提出决策。工程系统负责记录状态、限制权限、执行操作、验证结果和处理失败。</p>
+    <a class="text-link" href="{{ '/search/' | relative_url }}">搜索文章 →</a>
+  </aside>
 </div>

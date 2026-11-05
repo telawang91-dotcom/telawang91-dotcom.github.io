@@ -4,6 +4,7 @@
   category: "Agent Fundamentals"
   description: "从 Agent 的基本组成开始，系统理解 Tool Use、Function Calling、MCP、Memory 与 Planning。"
   accent: "01"
+  roadmap_check: 模型提出工具调用后，哪些参数、权限和执行结果需要由程序验证？
   chapters:
     - no: "00"
       title: "总纲：AI Agent 到底在解决什么问题？"
@@ -44,6 +45,7 @@
   category: "Retrieval & Context"
   description: "从检索到上下文组装，重点讨论 Agent 场景中的知识、示例、代码库与工作区上下文。"
   accent: "02"
+  roadmap_check: 知识库里明明有答案，如何区分切分、召回、排序和上下文组装的问题？
   chapters:
     - no: "00"
       title: "总纲：Agent 的上下文为什么比 Prompt 更重要"
@@ -84,6 +86,7 @@
   category: "Agent Runtime"
   description: "围绕状态机、LangGraph、Supervisor、Manager Agent 与多 Agent 异常处理，构建可控执行闭环。"
   accent: "03"
+  roadmap_check: 执行到一半失败时，如何判断应当重试、回滚还是重新规划？
   chapters:
     - no: "00"
       title: "总纲：为什么 Agent 需要 Runtime"
@@ -124,6 +127,7 @@
   category: "Reliability"
   description: "建立 Trace、Benchmark、确定性验证、LLM-as-Judge 与 Badcase 驱动迭代的完整可靠性体系。"
   accent: "04"
+  roadmap_check: 怎样把一次偶发失败变成能复现、能定位、能防止回归的测试？
   chapters:
     - no: "00"
       title: "总纲：为什么 Agent 的评测比聊天机器人难"
@@ -164,6 +168,7 @@
   category: "Coding Agent"
   description: "围绕 Codebase Context、Workspace、Coding Agent Workflow、工具执行、验证与 Benchmark 展开。"
   accent: "05"
+  roadmap_check: 一次跨文件改动需要哪些上下文、执行权限和验收证据？
   chapters:
     - no: "00"
       title: "总纲：Coding Agent 到底比普通 Agent 多了什么"
@@ -213,6 +218,7 @@
   category: "Case Studies"
   description: "用公开项目与脱敏工程实践复盘 Agent 系统的完整设计，包括 Smart Home、ReproLab、GUI Agent、结构化 Planning 与 Harness。"
   accent: "06"
+  roadmap_check: 选一个案例，能否画出它的输入、状态、验证环节和失败回退路径？
   chapters:
     - no: "00"
       title: "总纲：怎么把一个 Agent Demo 做成可展示、可运行的系统"
