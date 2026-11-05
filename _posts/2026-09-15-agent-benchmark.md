@@ -1,119 +1,43 @@
 ---
 layout: post
 title: "Agent Benchmark：怎么设计真正能回归的任务集？"
-subtitle: "一个好 Benchmark 不是几十条 Prompt，而是一套可重复、可分层、能定位回归来源的测试系统。"
+subtitle: "用同一组任务同时检查交付结果、执行过程和发布条件。"
 date: 2026-09-15 18:40:00 +0800
 series: "Agent Evaluation 与 Reliability"
 series_key: evaluation-reliability
 series_index: "02"
 category: Tech
 tags: [Agent, Evaluation, Benchmark, Reliability]
+updated: 2026-11-05
 ---
 
-Agent 评测和普通聊天机器人评测最大的区别，是 Agent 不只输出文本，还会规划、调用工具、修改环境并产生副作用。
+假设给 Coding Agent 换了一套代码库检索策略。新版更容易找到目标文件，但有时会顺手改动任务范围外的配置。要判断是否发布，我需要同时看到最终补丁、测试结果，以及它从哪个文件开始偏离任务。只对比最后一句回复，很难发现这些变化。
 
-因此一个 Benchmark 不能只问：
+## 给每条任务写一份可执行的验收单
 
-> 最后答案像不像标准答案？
+用一个构造的任务做例子：修复服务配置的 JSON 格式，保留其他文件原样。
 
-还要评估整个执行过程。
+| 样本信息 | 示例 |
+| --- | --- |
+| 初始环境 | 固定仓库提交和依赖版本，每次运行用独立副本 |
+| 用户目标与授权 | 修复指定 JSON 文件，可以运行本地测试 |
+| 结果断言 | JSON 解析通过，必要配置字段保留，相关测试通过 |
+| 过程约束 | 无越界写入，无未授权外发，校验失败时停在交付前 |
+| 诊断记录 | 保存工具动作、失败位置、断言结果和脱敏后的产物引用 |
 
-## 一个 Agent Task 至少需要哪些字段
+断言应允许多个正确实现。例如，只要解析结果和业务字段满足要求，就无需强制模型生成相同的文本补丁。权限和文件范围则适合精确比较。评估解释质量时可以加入人工评分，先用少量人工样本校准评分规则。
 
-```json
-{
-  "task_id": "deploy-001",
-  "instruction": "修复配置并重启服务",
-  "initial_state": {...},
-  "allowed_tools": [...],
-  "expected_artifacts": [...],
-  "assertions": [...],
-  "max_steps": 12
-}
-```
+## 从真实失败补用例
 
-重点是 `initial_state` 和 `assertions`。如果环境每次都不同，两个版本之间就无法公平比较。
+可以先从脱敏轨迹里找三类任务：日常高频、历史上失败过、影响大的边界场景。每次修完一个失败，补进能重现它的输入和断言，并留一组没有参与调参的任务观察泛化。工具调用和工作流路径可用于定位过程错误，持续比较则需要可重复运行的任务集。[OpenAI Agent Evals 指南](https://developers.openai.com/api/docs/guides/agent-evals) · [Trace grading 指南](https://developers.openai.com/api/docs/guides/trace-grading)
 
-## Benchmark 要覆盖不同难度
+## 给发布设定可以解释的条件
 
-可以分层：
+- **同条件比较。** 旧版和新版都从相同快照出发，使用同一组任务。模型输出有波动时，对关键样本多跑几次，并记录模型、提示词、工具和环境版本。
+- **关键违规单列。** 例如，发现一条未授权写入，先暂停这次发布并定位。通过其余任务的比例不能抵消这个违规。
+- **看失败分布。** 分开报任务完成、回归样本、调用步数和延迟。差异落在少量样本上时，直接读两版轨迹，看看是检索遗漏、工具参数错误还是验收条件失效。
+- **按改动选择验证。** 固定旧模型输出来测新版解析器很有效。更换检索策略后，模型看到的上下文变了，应重跑完整任务。两种验证各自回答不同的问题。
 
-```text
-Level 1：单 Tool、短路径
-Level 2：多 Tool、顺序执行
-Level 3：需要 Planning
-Level 4：异常恢复 / Replan
-Level 5：多 Agent / 长链路
-```
+这份评测最有用的输出是一条具体的发布决定，以及能追到证据的失败列表。本文示例用于说明设计，没有报告实测结果。
 
-如果所有 Case 都很简单，完成率很高也说明不了系统可靠。
-
-## 不只看 Completion Rate
-
-常见指标可以包括：
-
-- Task Success Rate；
-- Step Success Rate；
-- Tool Selection Accuracy；
-- Invalid Tool Call Rate；
-- Average Steps；
-- Token / Cost；
-- Latency；
-- Retry Count；
-- Safety Violation；
-- Artifact Quality。
-
-同样 90% 成功率，一个平均 5 步完成，一个平均 20 步绕圈，工程质量完全不同。
-
-## 为什么需要可重放环境
-
-如果任务依赖外部 API、文件系统或数据库，测试时最好提供 Sandbox / Mock / Snapshot。
-
-例如：
-
-```text
-Before test
-  ↓
-Restore workspace snapshot
-  ↓
-Run Agent
-  ↓
-Check filesystem / DB / artifact
-  ↓
-Reset
-```
-
-这样每次回归都有相同起点。
-
-## 任务集怎么避免“刷题”
-
-如果 Agent Prompt 专门针对固定 Case 优化，会出现 Benchmark Overfitting。
-
-因此可以保留：
-
-- public dev set；
-- hidden test set；
-- 参数化变体；
-- 新增真实 Badcase。
-
-真实线上失败应该持续沉淀进回归集。
-
-## 为什么要分模块统计
-
-如果总成功率从 85% 降到 80%，只看一个数字几乎没法定位。
-
-更好的 Dashboard 会拆：
-
-```text
-Retrieval failures     12
-Planning failures       5
-Tool failures           3
-Validation failures     2
-Timeouts                4
-```
-
-这样版本回归才真正可行动。
-
-## 面试里怎么说
-
-> Agent Benchmark 我会设计成可重复执行的任务集，每条 Case 固定初始环境、允许工具、预期 Artifact 和确定性 Assertion，不只看最终回答。指标会拆完成率、步骤数、工具选择、重试、成本和失败类型，并把线上 Badcase 持续沉淀成回归 Case，这样 Benchmark 才能真正驱动迭代。
+延伸阅读 [读阿甘的 Agent Harness 系列：失败能不能重放？](/2026/11/05/agent-replay-reading-notes/) · [确定性执行结果比对](/2026/09/15/deterministic-agent-evaluation/)。

@@ -22,7 +22,7 @@ tags: [Agent, Workflow, Retry, Replan, Reliability]
 
 例如网络超时、限流、临时服务不可用。
 
-这类问题通常适合 Retry。
+只读操作或已具备去重保证的写操作可以考虑重试。写操作超时且结果未知时，先查回执或读回状态。
 
 ### 2. Input / Parameter Error
 
@@ -107,7 +107,7 @@ charge_payment    → refund_payment
 request_id = task_id + step_id
 ```
 
-重复请求时服务端只执行一次。
+这需要服务端确实支持幂等键，并且重试仍在它的去重窗口内。键要对应同一个逻辑动作与请求内容。详见[任务恢复与幂等性](/2026/11/05/agent-checkpoint-idempotency/)。
 
 ## 一个实用恢复流程
 

@@ -42,6 +42,11 @@
       title: "Agent 的权限、安全与 Human-in-the-loop"
       status: published
       url: "/2026/09/15/agent-safety-hitl/"
+    - no: "08"
+      featured: true
+      title: "MCP 工具接进来之后，谁决定数据能不能发出去？"
+      status: published
+      url: "/2026/11/05/mcp-tool-trust-boundary/"
 
 - id: rag-context
   title: "RAG 与 Context Engineering：让 Agent 拿到正确上下文"
@@ -132,6 +137,11 @@
       title: "多 Agent 系统最常见的五类流转 Badcase"
       status: published
       url: "/2026/09/15/multi-agent-badcases/"
+    - no: "08"
+      featured: true
+      title: "Agent 任务恢复后，怎么避免把同一个动作做两遍？"
+      status: published
+      url: "/2026/11/05/agent-checkpoint-idempotency/"
 
 - id: evaluation-reliability
   title: "Agent Evaluation 与 Reliability：把智能系统做成工程系统"
@@ -152,6 +162,7 @@
       status: published
       url: "/2026/09/11/agent-tracing/"
     - no: "02"
+      featured: true
       title: "Benchmark：如何设计真正能回归的 Agent 任务集"
       status: published
       url: "/2026/09/15/agent-benchmark/"
